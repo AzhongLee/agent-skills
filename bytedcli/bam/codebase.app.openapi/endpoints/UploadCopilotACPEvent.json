@@ -1,0 +1,85 @@
+{
+  "endpoint_id": 3770235,
+  "method": "POST",
+  "path": "/UploadCopilotACPEvent",
+  "level": 1,
+  "name": "CopilotACPUploadEvents",
+  "note": "",
+  "rpc_method": "CopilotACPUploadEvents",
+  "owner": "pengweifeng.roger",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 90,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "1"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "openapi,copilot"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 265630,
+  "newest": 1,
+  "branch": "master",
+  "folder": "copilot",
+  "req_schema": {
+    "body_param": {
+      "Events": {
+        "type": "array",
+        "desc": null,
+        "raw_name": "Events",
+        "raw_type": "list",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "object",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "api/kitex/copilot.ACPEvent",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": "api/kitex/copilot.ACPEvent"
+          }
+        }
+      },
+      "SessionId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "SessionId",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      }
+    },
+    "filename": "api/kitex/copilot.thrift",
+    "req_type": "api/kitex/copilot.CopilotACPUploadEventsRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "filename": "api/kitex/copilot.thrift",
+      "resp_type": "api/kitex/copilot.CopilotACPUploadEventsResponse"
+    }
+  }
+}

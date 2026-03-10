@@ -1,0 +1,63 @@
+{
+  "endpoint_id": 3576158,
+  "method": "POST",
+  "path": "/DeleteWebhook",
+  "level": 1,
+  "name": "DeleteWebhook",
+  "note": "",
+  "rpc_method": "DeleteWebhook",
+  "owner": "porter.lai",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 90,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "1"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "openapi"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 225574,
+  "newest": 1,
+  "branch": "master",
+  "folder": "settings",
+  "req_schema": {
+    "body_param": {
+      "Id": {
+        "type": "string",
+        "desc": "Unique identifier of the webhook to delete.",
+        "raw_name": "Id",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      }
+    },
+    "filename": "api/kitex/settings.thrift",
+    "req_type": "api/kitex/settings.DeleteWebhookRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "filename": "api/kitex/settings.thrift",
+      "resp_type": "api/kitex/settings.DeleteWebhookResponse"
+    }
+  }
+}

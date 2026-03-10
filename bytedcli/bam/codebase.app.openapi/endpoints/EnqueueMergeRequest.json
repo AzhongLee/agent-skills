@@ -1,0 +1,155 @@
+{
+  "endpoint_id": 2526655,
+  "method": "POST",
+  "path": "/EnqueueMergeRequest",
+  "level": 0,
+  "name": "EnqueueMergeRequest",
+  "note": "",
+  "rpc_method": "EnqueueMergeRequest",
+  "owner": "jiangyunong",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 110,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "0"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.merge_queue:write"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 323879,
+  "newest": 1,
+  "branch": "master",
+  "folder": "merge_queue",
+  "req_schema": {
+    "body_param": {
+      "RepoId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"id\" db:\"shard_key\" resource:\"repo_id\""
+          }
+        ]
+      },
+      "MergeRequestNumber": {
+        "type": "int",
+        "desc": "Merge request number to enqueue.",
+        "raw_name": "MergeRequestNumber",
+        "raw_type": "i32",
+        "field_id": 2,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "MergeMethod": {
+        "type": "string",
+        "desc": "Enum values: `merge_commit` /  `merge_commit_with_semi_linear_history` /  `rebase_merge`.",
+        "raw_name": "MergeMethod",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "RemoveSourceBranchAfterMerge": {
+        "type": "bool",
+        "desc": "Whether to remove the source branch after merging.",
+        "raw_name": "RemoveSourceBranchAfterMerge",
+        "raw_type": "bool",
+        "field_id": 4,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "MergeCommitMessage": {
+        "type": "string",
+        "desc": "Commit message for the merge commit.",
+        "raw_name": "MergeCommitMessage",
+        "raw_type": "string",
+        "field_id": 5,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "SquashCommitMessage": {
+        "type": "string",
+        "desc": "Commit message for squashing commits.",
+        "raw_name": "SquashCommitMessage",
+        "raw_type": "string",
+        "field_id": 6,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "SquashCommits": {
+        "type": "bool",
+        "desc": "Whether to squash commits.",
+        "raw_name": "SquashCommits",
+        "raw_type": "bool",
+        "field_id": 7,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      }
+    },
+    "filename": "api/kitex/merge_queue.thrift",
+    "req_type": "api/kitex/merge_queue.EnqueueMergeRequestRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "MergeQueueEntry": {
+          "type": "object",
+          "desc": "Merge queue entry if successfully enqueued.",
+          "raw_name": "MergeQueueEntry",
+          "raw_type": "api/kitex/merge_queue.MergeQueueEntry",
+          "field_id": 1,
+          "optional": true,
+          "raw_optional": true,
+          "ref_name": "api/kitex/merge_queue.MergeQueueEntry"
+        },
+        "Error": {
+          "type": "object",
+          "desc": "Error details if the merge request is unmergeable or conflicts with other merge queue entries.",
+          "raw_name": "Error",
+          "raw_type": "api/kitex/merge_queue.EnqueueError",
+          "field_id": 2,
+          "optional": true,
+          "raw_optional": true,
+          "ref_name": "api/kitex/merge_queue.EnqueueError"
+        }
+      },
+      "filename": "api/kitex/merge_queue.thrift",
+      "resp_type": "api/kitex/merge_queue.EnqueueMergeRequestResponse"
+    }
+  }
+}

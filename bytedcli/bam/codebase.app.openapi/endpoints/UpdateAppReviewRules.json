@@ -1,0 +1,165 @@
+{
+  "endpoint_id": 2404327,
+  "method": "POST",
+  "path": "/UpdateAppReviewRules",
+  "level": 1,
+  "name": "UpdateAppReviewRules",
+  "note": "",
+  "rpc_method": "UpdateAppReviewRules",
+  "owner": "qianjingtao.qjt",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 90,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "1"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.merge_request.review.rule:write"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 302921,
+  "newest": 1,
+  "branch": "master",
+  "folder": "app_review",
+  "req_schema": {
+    "body_param": {
+      "RepoId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"id\" db:\"shard_key\""
+          }
+        ]
+      },
+      "MergeRequestId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "MergeRequestId",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"required\""
+          }
+        ]
+      },
+      "CommitId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "CommitId",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "ReviewRules": {
+        "type": "array",
+        "desc": "List of review rules to replace existing ones.",
+        "raw_name": "ReviewRules",
+        "raw_type": "list",
+        "field_id": 4,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "object",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "api/kitex/review.ReviewRule",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": "api/kitex/review.ReviewRule"
+          }
+        }
+      },
+      "AddReviewRules": {
+        "type": "array",
+        "desc": "List of review rules to add.",
+        "raw_name": "AddReviewRules",
+        "raw_type": "list",
+        "field_id": 5,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "object",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "api/kitex/review.ReviewRule",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": "api/kitex/review.ReviewRule"
+          }
+        }
+      },
+      "RemoveReviewRuleNames": {
+        "type": "array",
+        "desc": "Names of review rules to remove.",
+        "raw_name": "RemoveReviewRuleNames",
+        "raw_type": "list",
+        "field_id": 6,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "string",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "string",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null
+          }
+        }
+      }
+    },
+    "filename": "api/kitex/app_review.thrift",
+    "req_type": "api/kitex/app_review.UpdateAppReviewRulesRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "filename": "api/kitex/app_review.thrift",
+      "resp_type": "api/kitex/app_review.UpdateAppReviewRulesResponse"
+    }
+  }
+}

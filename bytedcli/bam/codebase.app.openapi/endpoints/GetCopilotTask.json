@@ -1,0 +1,79 @@
+{
+  "endpoint_id": 3308890,
+  "method": "POST",
+  "path": "/GetCopilotTask",
+  "level": 1,
+  "name": "GetCopilotTask",
+  "note": "",
+  "rpc_method": "GetCopilotTask",
+  "owner": "tangyuyi",
+  "updater": "lijinxing.x",
+  "modify_time": 1769758372,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 90,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "1"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "read,openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "copilot:read"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 265630,
+  "newest": 1,
+  "branch": "master",
+  "folder": "copilot",
+  "req_schema": {
+    "body_param": {
+      "TaskId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "TaskId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      }
+    },
+    "filename": "api/kitex/copilot.thrift",
+    "req_type": "api/kitex/copilot.GetCopilotTaskRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "Task": {
+          "type": "object",
+          "desc": null,
+          "raw_name": "Task",
+          "raw_type": "api/kitex/copilot.Task",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": "api/kitex/copilot.Task"
+        }
+      },
+      "filename": "api/kitex/copilot.thrift",
+      "resp_type": "api/kitex/copilot.GetCopilotTaskResponse"
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "endpoint_id": 2404310,
+  "method": "POST",
+  "path": "/GetProtectedBranch",
+  "level": 0,
+  "name": "GetProtectedBranch",
+  "note": "",
+  "rpc_method": "GetProtectedBranch",
+  "owner": "qianjingtao.qjt",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 110,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "0"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "read,openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.protected_branch:read"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 201640,
+  "newest": 1,
+  "branch": "master",
+  "folder": "protected_branch",
+  "req_schema": {
+    "body_param": {
+      "RepoId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"id\" db:\"shard_key\" resource:\"repo_id\""
+          }
+        ]
+      },
+      "Id": {
+        "type": "string",
+        "desc": "Protected branch ID. Mutually exclusive with `NamePattern` and `BranchName`.",
+        "raw_name": "Id",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "NamePattern": {
+        "type": "string",
+        "desc": "Name pattern of the protected branch. Mutually exclusive with `Id` and `BranchName`.",
+        "raw_name": "NamePattern",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "BranchName": {
+        "type": "string",
+        "desc": "Branch name. Used to find one protected branch that most appropriate to the branch. Mutually exclusive with `Id` and `NamePattern`.\n- If one protected branch has the exactly same pattern name, it will be returned.\n- If multiple protected branches match the branch name, the first created will be returned.\n- If no protected branch matches the branch name, NotFound error will be returned.",
+        "raw_name": "BranchName",
+        "raw_type": "string",
+        "field_id": 4,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      }
+    },
+    "filename": "api/kitex/protected_branch.thrift",
+    "req_type": "api/kitex/protected_branch.GetProtectedBranchRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "ProtectedBranch": {
+          "type": "object",
+          "desc": "The requested protected branch details.",
+          "raw_name": "ProtectedBranch",
+          "raw_type": "api/kitex/protected_branch.ProtectedBranch",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": "api/kitex/protected_branch.ProtectedBranch"
+        }
+      },
+      "filename": "api/kitex/protected_branch.thrift",
+      "resp_type": "api/kitex/protected_branch.GetProtectedBranchResponse"
+    }
+  }
+}

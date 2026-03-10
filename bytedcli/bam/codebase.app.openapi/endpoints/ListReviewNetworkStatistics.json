@@ -1,0 +1,133 @@
+{
+  "endpoint_id": 3582521,
+  "method": "POST",
+  "path": "/ListReviewNetworkStatistics",
+  "level": 1,
+  "name": "ListReviewNetworkStatistics",
+  "note": "List review network edges",
+  "rpc_method": "ListReviewNetworkStatistics",
+  "owner": "gujunxi",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 90,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "1"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "openapi,read"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 201641,
+  "newest": 1,
+  "branch": "master",
+  "folder": "review",
+  "req_schema": {
+    "body_param": {
+      "AuthorId": {
+        "type": "string",
+        "desc": "Author ID filter. Either AuthorId or AuthorUsername must be provided.",
+        "raw_name": "AuthorId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "AuthorUsername": {
+        "type": "string",
+        "desc": "Author username filter. Either AuthorId or AuthorUsername must be provided. If both AuthorId and AuthorUsername are provided, AuthorId takes precedence.",
+        "raw_name": "AuthorUsername",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "ReviewerId": {
+        "type": "string",
+        "desc": "Reviewer ID filter.",
+        "raw_name": "ReviewerId",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "ReviewerUsername": {
+        "type": "string",
+        "desc": "Reviewer username filter. If both ReviewerId and ReviewerUsername are provided, ReviewerId takes precedence.",
+        "raw_name": "ReviewerUsername",
+        "raw_type": "string",
+        "field_id": 4,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "TopN": {
+        "type": "int",
+        "desc": "Maximum number of results to return. Maximum 100, default is 3.",
+        "raw_name": "TopN",
+        "raw_type": "i32",
+        "field_id": 5,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"gte=1,max=100\""
+          }
+        ]
+      }
+    },
+    "filename": "api/kitex/review.thrift",
+    "req_type": "api/kitex/review.ListReviewNetworkStatisticsRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "ReviewNetworkStatistics": {
+          "type": "array",
+          "desc": "List of review network edges.",
+          "raw_name": "ReviewNetworkStatistics",
+          "raw_type": "list",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null,
+          "children": {
+            "0": {
+              "type": "object",
+              "desc": null,
+              "raw_name": null,
+              "raw_type": "api/kitex/review.ReviewNetworkStatistic",
+              "field_id": null,
+              "optional": null,
+              "raw_optional": null,
+              "ref_name": "api/kitex/review.ReviewNetworkStatistic"
+            }
+          }
+        }
+      },
+      "filename": "api/kitex/review.thrift",
+      "resp_type": "api/kitex/review.ListReviewNetworkStatisticsResponse"
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "endpoint_id": 2975840,
+  "method": "POST",
+  "path": "/UpdateBranch",
+  "level": 1,
+  "name": "UpdateBranch",
+  "note": "",
+  "rpc_method": "UpdateBranch",
+  "owner": "porter.lai",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 90,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "1"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.content:write"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 201643,
+  "newest": 1,
+  "branch": "master",
+  "folder": "vcs",
+  "req_schema": {
+    "body_param": {
+      "RepoId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "resource:\"repo_id\""
+          }
+        ]
+      },
+      "BranchName": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "BranchName",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "NewCommitId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "NewCommitId",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "OldCommitId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "OldCommitId",
+        "raw_type": "string",
+        "field_id": 4,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      }
+    },
+    "filename": "api/kitex/vcs.thrift",
+    "req_type": "api/kitex/vcs.UpdateBranchRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "filename": "api/kitex/vcs.thrift",
+      "resp_type": "api/kitex/vcs.UpdateBranchResponse"
+    }
+  }
+}

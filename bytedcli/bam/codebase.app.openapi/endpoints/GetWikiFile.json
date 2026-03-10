@@ -1,0 +1,105 @@
+{
+  "endpoint_id": 3043320,
+  "method": "POST",
+  "path": "/GetWikiFile",
+  "level": 1,
+  "name": "GetWikiFile",
+  "note": "",
+  "rpc_method": "GetWikiFile",
+  "owner": "tangyuyi",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 90,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "1"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "read,openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.wiki:read"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 257622,
+  "newest": 1,
+  "branch": "master",
+  "folder": "wiki",
+  "req_schema": {
+    "body_param": {
+      "RepoId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"id\" db:\"shard_key\" resource:\"repo_id\""
+          }
+        ]
+      },
+      "VersionId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "VersionId",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "Path": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "Path",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      }
+    },
+    "filename": "api/kitex/wiki.thrift",
+    "req_type": "api/kitex/wiki.GetWikiFileRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "Content": {
+          "type": "string",
+          "desc": null,
+          "raw_name": "Content",
+          "raw_type": "string",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null
+        }
+      },
+      "filename": "api/kitex/wiki.thrift",
+      "resp_type": "api/kitex/wiki.GetWikiFileResponse"
+    }
+  }
+}

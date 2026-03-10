@@ -1,0 +1,163 @@
+{
+  "endpoint_id": 2404335,
+  "method": "POST",
+  "path": "/CreateCommit",
+  "level": 0,
+  "name": "CreateCommit",
+  "note": "Create a commit with multiple files and actions. eg: `create`, `update`, `delete`, `move`, `chmod`, `create_dir`",
+  "rpc_method": "CreateCommit",
+  "owner": "qianjingtao.qjt",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 110,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "0"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.content:write"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 201643,
+  "newest": 1,
+  "branch": "master",
+  "folder": "vcs",
+  "req_schema": {
+    "body_param": {
+      "RepoId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "resource:\"repo_id\""
+          }
+        ]
+      },
+      "Branch": {
+        "type": "string",
+        "desc": "Name of the branch to commit into.",
+        "raw_name": "Branch",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"max=255\""
+          }
+        ]
+      },
+      "StartBranch": {
+        "type": "string",
+        "desc": "Name of the branch to start the new branch from.",
+        "raw_name": "StartBranch",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "CommitMessage": {
+        "type": "string",
+        "desc": "Commit message.",
+        "raw_name": "CommitMessage",
+        "raw_type": "string",
+        "field_id": 4,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "CommitAuthorName": {
+        "type": "string",
+        "desc": "Commit author name. Defaults to the caller's name when not provided.",
+        "raw_name": "CommitAuthorName",
+        "raw_type": "string",
+        "field_id": 5,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "CommitAuthorEmail": {
+        "type": "string",
+        "desc": "Commit author email. Defaults to the caller's email when not provided.",
+        "raw_name": "CommitAuthorEmail",
+        "raw_type": "string",
+        "field_id": 6,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "CommitFilesActions": {
+        "type": "array",
+        "desc": "Actions to build a commit. There can be multiple actions per commit.",
+        "raw_name": "CommitFilesActions",
+        "raw_type": "list",
+        "field_id": 21,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "object",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "api/kitex/vcs.CommitFilesAction",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": "api/kitex/vcs.CommitFilesAction"
+          }
+        }
+      }
+    },
+    "filename": "api/kitex/vcs.thrift",
+    "req_type": "api/kitex/vcs.CreateCommitRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "Commit": {
+          "type": "object",
+          "desc": null,
+          "raw_name": "Commit",
+          "raw_type": "api/kitex/vcs.Commit",
+          "field_id": 1,
+          "optional": true,
+          "raw_optional": null,
+          "ref_name": "api/kitex/vcs.Commit"
+        }
+      },
+      "filename": "api/kitex/vcs.thrift",
+      "resp_type": "api/kitex/vcs.CreateCommitResponse"
+    }
+  }
+}

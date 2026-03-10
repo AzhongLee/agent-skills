@@ -1,0 +1,143 @@
+{
+  "endpoint_id": 3404490,
+  "method": "POST",
+  "path": "/CreateRelease",
+  "level": 0,
+  "name": "CreateRelease",
+  "note": "",
+  "rpc_method": "CreateRelease",
+  "owner": "qianjingtao.qjt",
+  "updater": "lijinxing.x",
+  "modify_time": 1770057205,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 110,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "0"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.release:write"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 281107,
+  "newest": 1,
+  "branch": "master",
+  "folder": "release",
+  "req_schema": {
+    "body_param": {
+      "RepoId": {
+        "type": "string",
+        "desc": "Repository ID where the release will be created.",
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "resource:\"repo_id\""
+          }
+        ]
+      },
+      "TagName": {
+        "type": "string",
+        "desc": "The tag from which the release is created.\nIf the tag does not exist and `TagRevision` is provided, a new tag will be created from `TagRevision`.",
+        "raw_name": "TagName",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"max=255\""
+          }
+        ]
+      },
+      "Description": {
+        "type": "string",
+        "desc": "Description of the release. Max length: 65535.",
+        "raw_name": "Description",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty,max=65535\""
+          }
+        ]
+      },
+      "TagRevision": {
+        "type": "string",
+        "desc": "Optional. The revision to create a new tag from if the tag does not exist.",
+        "raw_name": "TagRevision",
+        "raw_type": "string",
+        "field_id": 4,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty,max=255\""
+          }
+        ]
+      },
+      "TagMessage": {
+        "type": "string",
+        "desc": "Optional. Message for creating a new annotated tag if the tag does not exist.",
+        "raw_name": "TagMessage",
+        "raw_type": "string",
+        "field_id": 5,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      }
+    },
+    "filename": "api/kitex/release.thrift",
+    "req_type": "api/kitex/release.CreateReleaseRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "Release": {
+          "type": "object",
+          "desc": "Details of the newly created release.",
+          "raw_name": "Release",
+          "raw_type": "api/kitex/release.Release",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": "api/kitex/release.Release"
+        }
+      },
+      "filename": "api/kitex/release.thrift",
+      "resp_type": "api/kitex/release.CreateReleaseResponse"
+    }
+  }
+}

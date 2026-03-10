@@ -1,0 +1,153 @@
+{
+  "endpoint_id": 2404374,
+  "method": "POST",
+  "path": "/ListDirectoryEntries",
+  "level": 0,
+  "name": "ListDirectoryEntries",
+  "note": "List directory entries by path.",
+  "rpc_method": "ListDirectoryEntries",
+  "owner": "qianjingtao.qjt",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 110,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "0"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "read,openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.content:read"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 201643,
+  "newest": 1,
+  "branch": "master",
+  "folder": "vcs",
+  "req_schema": {
+    "body_param": {
+      "RepoId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "resource:\"repo_id\""
+          }
+        ]
+      },
+      "Revision": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "Revision",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "Path": {
+        "type": "string",
+        "desc": "Relative directory path. Can't be empty",
+        "raw_name": "Path",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "PageToken": {
+        "type": "string",
+        "desc": "Pagination cursor. Returns the first page if empty.",
+        "raw_name": "PageToken",
+        "raw_type": "string",
+        "field_id": 4,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "PageSize": {
+        "type": "int",
+        "desc": "Number of results per page. Maximum 1000, default is 10.",
+        "raw_name": "PageSize",
+        "raw_type": "i32",
+        "field_id": 5,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty,gte=1\""
+          }
+        ]
+      }
+    },
+    "filename": "api/kitex/vcs.thrift",
+    "req_type": "api/kitex/vcs.ListDirectoryEntriesRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "DirEntries": {
+          "type": "array",
+          "desc": null,
+          "raw_name": "DirEntries",
+          "raw_type": "list",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null,
+          "children": {
+            "0": {
+              "type": "object",
+              "desc": null,
+              "raw_name": null,
+              "raw_type": "api/kitex/vcs.FileMeta",
+              "field_id": null,
+              "optional": null,
+              "raw_optional": null,
+              "ref_name": "api/kitex/vcs.FileMeta"
+            }
+          }
+        },
+        "NextPageToken": {
+          "type": "string",
+          "desc": "Pagination token for the next page. Empty if no more results.",
+          "raw_name": "NextPageToken",
+          "raw_type": "string",
+          "field_id": 2,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null
+        }
+      },
+      "filename": "api/kitex/vcs.thrift",
+      "resp_type": "api/kitex/vcs.ListDirectoryEntriesResponse"
+    }
+  }
+}

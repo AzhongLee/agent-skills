@@ -1,0 +1,123 @@
+{
+  "endpoint_id": 2404324,
+  "method": "POST",
+  "path": "/CreateProtectedTag",
+  "level": 1,
+  "name": "CreateProtectedTag",
+  "note": "",
+  "rpc_method": "CreateProtectedTag",
+  "owner": "qianjingtao.qjt",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 90,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "1"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.protected_tag:write"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 201639,
+  "newest": 1,
+  "branch": "master",
+  "folder": "protected_tag",
+  "req_schema": {
+    "body_param": {
+      "RepoId": {
+        "type": "string",
+        "desc": "Repository ID where the protected tag will be created.",
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"id\" db:\"shard_key\" resource:\"repo_id\""
+          }
+        ]
+      },
+      "NamePattern": {
+        "type": "string",
+        "desc": "Name pattern of the new protected tag. Maximum length: 255.",
+        "raw_name": "NamePattern",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"max=255\""
+          }
+        ]
+      },
+      "CreateAccess": {
+        "type": "array",
+        "desc": "Access requirements for creating tags matching this pattern.",
+        "raw_name": "CreateAccess",
+        "raw_type": "list",
+        "field_id": 3,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "object",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "api/kitex/account.UserSelector",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": "api/kitex/account.UserSelector"
+          }
+        }
+      }
+    },
+    "filename": "api/kitex/protected_tag.thrift",
+    "req_type": "api/kitex/protected_tag.CreateProtectedTagRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "ProtectedTag": {
+          "type": "object",
+          "desc": "Details of the newly created protected tag.",
+          "raw_name": "ProtectedTag",
+          "raw_type": "api/kitex/protected_tag.ProtectedTag",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": "api/kitex/protected_tag.ProtectedTag"
+        }
+      },
+      "filename": "api/kitex/protected_tag.thrift",
+      "resp_type": "api/kitex/protected_tag.CreateProtectedTagResponse"
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "endpoint_id": 3747323,
+  "method": "POST",
+  "path": "/CopilotACPRequest",
+  "level": 1,
+  "name": "CopilotACPRequest",
+  "note": "",
+  "rpc_method": "CopilotACPRequest",
+  "owner": "zhouhanchen.2024",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 90,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "1"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "openapi,copilot"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo:read"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 265630,
+  "newest": 1,
+  "branch": "master",
+  "folder": "copilot",
+  "req_schema": {
+    "body_param": {
+      "method": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "method",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "params": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "params",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      }
+    },
+    "filename": "api/kitex/copilot.thrift",
+    "req_type": "api/kitex/copilot.CopilotACPRequestRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "combinedResult": {
+          "type": "object",
+          "desc": null,
+          "raw_name": "combinedResult",
+          "raw_type": "api/kitex/copilot.CopilotACPRequestCombinedResult",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": "api/kitex/copilot.CopilotACPRequestCombinedResult"
+        }
+      },
+      "filename": "api/kitex/copilot.thrift",
+      "resp_type": "api/kitex/copilot.CopilotACPRequestResponse"
+    }
+  }
+}

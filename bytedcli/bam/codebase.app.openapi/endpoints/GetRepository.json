@@ -1,0 +1,121 @@
+{
+  "endpoint_id": 2404320,
+  "method": "POST",
+  "path": "/GetRepository",
+  "level": 0,
+  "name": "GetRepository",
+  "note": "根据id获取仓库",
+  "rpc_method": "GetRepository",
+  "owner": "qianjingtao.qjt",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 110,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "0"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "read,openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.metadata:read"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 201645,
+  "newest": 1,
+  "branch": "master",
+  "folder": "repository",
+  "req_schema": {
+    "body_param": {
+      "Id": {
+        "type": "string",
+        "desc": "ID of the repository. Either `Id` or `Path` must be provided, but not both. If both are provided, `Id` takes precedence.",
+        "raw_name": "Id",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"required_without=Path,omitempty,id\" resource:\"repo_id\""
+          }
+        ]
+      },
+      "WithPermissions": {
+        "type": "bool",
+        "desc": "Deprecated. Whether to return current user permissions for the repository.",
+        "raw_name": "WithPermissions",
+        "raw_type": "bool",
+        "field_id": 2,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "Path": {
+        "type": "string",
+        "desc": "Path of the repository (e.g. `a/b/repo`).",
+        "raw_name": "Path",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"required_without=Id\" resource:\"repo_path\""
+          }
+        ]
+      },
+      "Selector": {
+        "type": "object",
+        "desc": "Selector for additional repository details to include in the response.",
+        "raw_name": "Selector",
+        "raw_type": "api/kitex/repository.RepositorySelector",
+        "field_id": 4,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": "api/kitex/repository.RepositorySelector"
+      }
+    },
+    "filename": "api/kitex/repository.thrift",
+    "req_type": "api/kitex/repository.GetRepositoryRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "Repository": {
+          "type": "object",
+          "desc": "Repository details.",
+          "raw_name": "Repository",
+          "raw_type": "api/kitex/repository.Repository",
+          "field_id": 1,
+          "optional": true,
+          "raw_optional": true,
+          "ref_name": "api/kitex/repository.Repository"
+        }
+      },
+      "filename": "api/kitex/repository.thrift",
+      "resp_type": "api/kitex/repository.RepositoryResponse"
+    }
+  }
+}

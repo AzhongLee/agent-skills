@@ -1,0 +1,4 @@
+interface:
+  display_name: "ByteDance RDS"
+  short_description: "RDS database search/query via bytedcli"
+  default_prompt: "Use $bytedance-rds to list databases or run SQL queries."

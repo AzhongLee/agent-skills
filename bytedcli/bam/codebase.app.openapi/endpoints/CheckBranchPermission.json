@@ -1,0 +1,115 @@
+{
+  "endpoint_id": 2647910,
+  "method": "POST",
+  "path": "/CheckBranchPermission",
+  "level": 0,
+  "name": "CheckBranchPermission",
+  "note": "",
+  "rpc_method": "CheckBranchPermission",
+  "owner": "gujunxi",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 110,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "0"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "read,openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.protected_branch:read"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 201640,
+  "newest": 1,
+  "branch": "master",
+  "folder": "protected_branch",
+  "req_schema": {
+    "body_param": {
+      "RepoId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"id\" db:\"shard_key\" resource:\"repo_id\""
+          }
+        ]
+      },
+      "BranchAction": {
+        "type": "string",
+        "desc": "Action apply to the branch. Enum values: `create`, `merge`, `push`, `force_push`, `delete`, `bypass`.",
+        "raw_name": "BranchAction",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "BranchName": {
+        "type": "string",
+        "desc": "Name pattern of the protected branch. Mutually exclusive with `Id` and `BranchName`.",
+        "raw_name": "BranchName",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      }
+    },
+    "filename": "api/kitex/protected_branch.thrift",
+    "req_type": "api/kitex/protected_branch.CheckBranchPermissionRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "Allowed": {
+          "type": "bool",
+          "desc": null,
+          "raw_name": "Allowed",
+          "raw_type": "bool",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null
+        },
+        "ViolatedProtectedBranch": {
+          "type": "object",
+          "desc": "The violated protected branch leads to a not allowed state.",
+          "raw_name": "ViolatedProtectedBranch",
+          "raw_type": "api/kitex/protected_branch.ProtectedBranch",
+          "field_id": 2,
+          "optional": true,
+          "raw_optional": true,
+          "ref_name": "api/kitex/protected_branch.ProtectedBranch"
+        }
+      },
+      "filename": "api/kitex/protected_branch.thrift",
+      "resp_type": "api/kitex/protected_branch.CheckBranchPermissionResponse"
+    }
+  }
+}

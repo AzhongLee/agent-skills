@@ -1,0 +1,221 @@
+{
+  "endpoint_id": 2404372,
+  "method": "POST",
+  "path": "/UpdateUserRelatedFilePathsForApp",
+  "level": 1,
+  "name": "UpdateUserRelatedFilePathsForApp",
+  "note": "",
+  "rpc_method": "UpdateUserRelatedFilePathsForApp",
+  "owner": "qianjingtao.qjt",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 90,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "1"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.merge_request.review.user_related_file:write"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 302921,
+  "newest": 1,
+  "branch": "master",
+  "folder": "app_review",
+  "req_schema": {
+    "body_param": {
+      "RepoId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"id\" db:\"shard_key\""
+          }
+        ]
+      },
+      "MergeRequestId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "MergeRequestId",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"required\""
+          }
+        ]
+      },
+      "SetUserRelatedFilePaths": {
+        "type": "map",
+        "desc": "List of related file paths, keyed by user ID.",
+        "raw_name": "SetUserRelatedFilePaths",
+        "raw_type": "map",
+        "field_id": 3,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "_key": {
+            "type": "string",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "string",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null
+          },
+          "_val": {
+            "type": "array",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "list",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null,
+            "children": {
+              "0": {
+                "type": "string",
+                "desc": null,
+                "raw_name": null,
+                "raw_type": "string",
+                "field_id": null,
+                "optional": null,
+                "raw_optional": null,
+                "ref_name": null
+              }
+            }
+          }
+        }
+      },
+      "AddUserRelatedFilePaths": {
+        "type": "map",
+        "desc": "List of file paths to add, keyed by user ID.",
+        "raw_name": "AddUserRelatedFilePaths",
+        "raw_type": "map",
+        "field_id": 4,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "_key": {
+            "type": "string",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "string",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null
+          },
+          "_val": {
+            "type": "array",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "list",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null,
+            "children": {
+              "0": {
+                "type": "string",
+                "desc": null,
+                "raw_name": null,
+                "raw_type": "string",
+                "field_id": null,
+                "optional": null,
+                "raw_optional": null,
+                "ref_name": null
+              }
+            }
+          }
+        }
+      },
+      "RemoveUserRelatedFilePaths": {
+        "type": "map",
+        "desc": "List of file paths to remove, keyed by user ID.",
+        "raw_name": "RemoveUserRelatedFilePaths",
+        "raw_type": "map",
+        "field_id": 5,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "_key": {
+            "type": "string",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "string",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null
+          },
+          "_val": {
+            "type": "array",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "list",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null,
+            "children": {
+              "0": {
+                "type": "string",
+                "desc": null,
+                "raw_name": null,
+                "raw_type": "string",
+                "field_id": null,
+                "optional": null,
+                "raw_optional": null,
+                "ref_name": null
+              }
+            }
+          }
+        }
+      }
+    },
+    "filename": "api/kitex/app_review.thrift",
+    "req_type": "api/kitex/app_review.UpdateUserRelatedFilePathsForAppRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "filename": "api/kitex/app_review.thrift",
+      "resp_type": "api/kitex/app_review.UpdateUserRelatedFilePathsForAppResponse"
+    }
+  }
+}

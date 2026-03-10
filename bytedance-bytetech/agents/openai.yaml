@@ -1,0 +1,4 @@
+interface:
+  display_name: "ByteDance ByteTech"
+  short_description: "ByteTech login, search, rankings, and document fetch via bytedcli"
+  default_prompt: "Use $bytedance-bytetech to login to ByteTech, search articles, inspect hot/latest/rank lists, or fetch ByteTech and linked Lark document content."

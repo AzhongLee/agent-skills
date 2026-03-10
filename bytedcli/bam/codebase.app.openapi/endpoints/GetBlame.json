@@ -1,0 +1,157 @@
+{
+  "endpoint_id": 2552815,
+  "method": "POST",
+  "path": "/GetBlame",
+  "level": 1,
+  "name": "GetBlame",
+  "note": "Get blame of the given line range.",
+  "rpc_method": "GetBlame",
+  "owner": "tangyuyi",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 90,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "1"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "read,openapi"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 201643,
+  "newest": 1,
+  "branch": "master",
+  "folder": "vcs",
+  "req_schema": {
+    "body_param": {
+      "RepoId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "resource:\"repo_id\""
+          }
+        ]
+      },
+      "Revision": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "Revision",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"required\""
+          }
+        ]
+      },
+      "Path": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "Path",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"required\""
+          }
+        ]
+      },
+      "StartLine": {
+        "type": "int",
+        "desc": null,
+        "raw_name": "StartLine",
+        "raw_type": "i64",
+        "field_id": 4,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"gt=0\""
+          }
+        ]
+      },
+      "EndLine": {
+        "type": "int",
+        "desc": null,
+        "raw_name": "EndLine",
+        "raw_type": "i64",
+        "field_id": 5,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"gtefield=StartLine\""
+          }
+        ]
+      }
+    },
+    "filename": "api/kitex/vcs.thrift",
+    "req_type": "api/kitex/vcs.GetBlameRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "Segments": {
+          "type": "array",
+          "desc": "May be empty.",
+          "raw_name": "Segments",
+          "raw_type": "list",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null,
+          "children": {
+            "0": {
+              "type": "object",
+              "desc": null,
+              "raw_name": null,
+              "raw_type": "api/kitex/vcs.BlameSegment",
+              "field_id": null,
+              "optional": null,
+              "raw_optional": null,
+              "ref_name": "api/kitex/vcs.BlameSegment"
+            }
+          }
+        }
+      },
+      "filename": "api/kitex/vcs.thrift",
+      "resp_type": "api/kitex/vcs.GetBlameResponse"
+    }
+  }
+}

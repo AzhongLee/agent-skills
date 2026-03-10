@@ -1,0 +1,161 @@
+{
+  "endpoint_id": 2697163,
+  "method": "POST",
+  "path": "/CreateMergeRequestBypasses",
+  "level": 0,
+  "name": "CreateMergeRequestBypasses",
+  "note": "",
+  "rpc_method": "CreateMergeRequestBypasses",
+  "owner": "jiangyunong",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 110,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "0"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.merge_request.bypass:write"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 330162,
+  "newest": 1,
+  "branch": "master",
+  "folder": "merge_request",
+  "req_schema": {
+    "body_param": {
+      "MergeRequestId": {
+        "type": "string",
+        "desc": "Merge request ID. Required if `MergeRequestNumber` is not provided.",
+        "raw_name": "MergeRequestId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"required_without=MergeRequestNumber\""
+          }
+        ]
+      },
+      "CommitId": {
+        "type": "string",
+        "desc": "Commit ID associated with the bypass.",
+        "raw_name": "CommitId",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "Inputs": {
+        "type": "array",
+        "desc": "List of bypass inputs specifying reasons and targets.",
+        "raw_name": "Inputs",
+        "raw_type": "list",
+        "field_id": 3,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "object",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "api/kitex/merge_request.BypassInput",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": "api/kitex/merge_request.BypassInput"
+          }
+        }
+      },
+      "RepoId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 4,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"id\" db:\"shard_key\" resource:\"repo_id\""
+          }
+        ]
+      },
+      "MergeRequestNumber": {
+        "type": "int",
+        "desc": "Merge request number. Required if `MergeRequestId` is not provided.",
+        "raw_name": "MergeRequestNumber",
+        "raw_type": "i32",
+        "field_id": 5,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"required_without=MergeRequestId\""
+          }
+        ]
+      }
+    },
+    "filename": "api/kitex/merge_request.thrift",
+    "req_type": "api/kitex/merge_request.CreateMergeRequestBypassesRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "Bypasses": {
+          "type": "array",
+          "desc": "List of bypasses created.",
+          "raw_name": "Bypasses",
+          "raw_type": "list",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null,
+          "children": {
+            "0": {
+              "type": "object",
+              "desc": null,
+              "raw_name": null,
+              "raw_type": "api/kitex/merge_request.Bypass",
+              "field_id": null,
+              "optional": null,
+              "raw_optional": null,
+              "ref_name": "api/kitex/merge_request.Bypass"
+            }
+          }
+        }
+      },
+      "filename": "api/kitex/merge_request.thrift",
+      "resp_type": "api/kitex/merge_request.CreateMergeRequestBypassesResponse"
+    }
+  }
+}

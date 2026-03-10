@@ -1,0 +1,171 @@
+{
+  "endpoint_id": 3321410,
+  "method": "POST",
+  "path": "/SearchRepositories",
+  "level": 1,
+  "name": "SearchRepositories",
+  "note": "",
+  "rpc_method": "SearchRepositories",
+  "owner": "lijinxing.x",
+  "updater": "lijinxing.x",
+  "modify_time": 1770057205,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 90,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "1"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "read,openapi"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 271146,
+  "newest": 1,
+  "branch": "master",
+  "folder": "search",
+  "req_schema": {
+    "body_param": {
+      "Filter": {
+        "type": "object",
+        "desc": "RepositoryFilter is used to filter repositories based on various conditions.\n\n- **Default Behavior**:\n- All fields in a filter are combined with an implicit `And` relationship.\n- For example, if multiple fields like `SourceBranch` and `Status` are provided,\nthe filter will only match repositories that satisfy all specified conditions.\n\n- **Boolean Logic Support**:\n- Use `And`, `Or`, and `Not` fields to construct complex filter logic.\n- Each field accepts one or more nested `RepositoryFilter` objects, allowing for\nrecursive combinations of conditions.\n\n**Examples**:\n1. To filter repositories with `NamespaceName=\"vecode\"` **AND** `ContributorId=\"123\"`, set:\n```json\n{\n\"NamespaceName\": \"vecode\",\n\"ContributorId\": \"123\"\n}\n```\n\n2. To filter repositories with specific properties `department_id=\"123\"` **OR** `byte_tree_node_id=\"456\"`, set:\n```json\n{\n\"Or\": [\n{ \"Property\": { \"Name\": \"department_id\", \"RawValue\": \"123\" } },\n{ \"Property\": { \"Name\": \"byte_tree_node_id\", \"RawValue\": \"456\" } }\n]\n}\n```",
+        "raw_name": "Filter",
+        "raw_type": "api/kitex/search.RepositoryFilter",
+        "field_id": 1,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": "api/kitex/search.RepositoryFilter"
+      },
+      "SortBy": {
+        "type": "string",
+        "desc": "Sorting key. Enum values: `CreatedAt` / `UpdatedAt`.",
+        "raw_name": "SortBy",
+        "raw_type": "string",
+        "field_id": 10,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty,oneof=CreatedAt UpdatedAt\""
+          }
+        ]
+      },
+      "SortOrder": {
+        "type": "string",
+        "desc": "Sorting order. Enum values: `Desc` / `Asc`.",
+        "raw_name": "SortOrder",
+        "raw_type": "string",
+        "field_id": 11,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty,sortOrder\""
+          }
+        ]
+      },
+      "PageToken": {
+        "type": "string",
+        "desc": "Pagination cursor. Returns the first page if empty.",
+        "raw_name": "PageToken",
+        "raw_type": "string",
+        "field_id": 20,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "PageSize": {
+        "type": "int",
+        "desc": "Pagination size. Maximum 100. default is 10.",
+        "raw_name": "PageSize",
+        "raw_type": "i32",
+        "field_id": 21,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"gte=1\""
+          }
+        ]
+      },
+      "Selector": {
+        "type": "object",
+        "desc": "Additional information to be assembled with the merge request data.",
+        "raw_name": "Selector",
+        "raw_type": "api/kitex/repository.RepositorySelector",
+        "field_id": 30,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": "api/kitex/repository.RepositorySelector",
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty\""
+          }
+        ]
+      }
+    },
+    "filename": "api/kitex/search.thrift",
+    "req_type": "api/kitex/search.SearchRepositoriesRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "Repositories": {
+          "type": "array",
+          "desc": "List of repositories matching the query.",
+          "raw_name": "Repositories",
+          "raw_type": "list",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null,
+          "children": {
+            "0": {
+              "type": "object",
+              "desc": null,
+              "raw_name": null,
+              "raw_type": "api/kitex/repository.Repository",
+              "field_id": null,
+              "optional": null,
+              "raw_optional": null,
+              "ref_name": "api/kitex/repository.Repository"
+            }
+          }
+        },
+        "NextPageToken": {
+          "type": "string",
+          "desc": "Pagination token for the next page. Empty if no more results.",
+          "raw_name": "NextPageToken",
+          "raw_type": "string",
+          "field_id": 2,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null
+        }
+      },
+      "filename": "api/kitex/search.thrift",
+      "resp_type": "api/kitex/search.SearchRepositoriesResponse"
+    }
+  }
+}

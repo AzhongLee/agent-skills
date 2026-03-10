@@ -1,0 +1,5 @@
+interface:
+  display_name: "ByteDance Netlink"
+  short_description: "Netlink domains/paths configs via bytedcli"
+  default_prompt: "Use $bytedance-netlink to search domains, inspect servername location configs, and debug path routing across CN/BOE/I18N."
+

@@ -1,0 +1,165 @@
+{
+  "endpoint_id": 3378562,
+  "method": "POST",
+  "path": "/SearchIssues",
+  "level": 1,
+  "name": "SearchIssues",
+  "note": "",
+  "rpc_method": "SearchIssues",
+  "owner": "lijinxing.x",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 90,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "1"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "read,openapi"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 271146,
+  "newest": 1,
+  "branch": "master",
+  "folder": "search",
+  "req_schema": {
+    "body_param": {
+      "Filter": {
+        "type": "object",
+        "desc": null,
+        "raw_name": "Filter",
+        "raw_type": "api/kitex/search.IssueFilter",
+        "field_id": 1,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": "api/kitex/search.IssueFilter"
+      },
+      "SortBy": {
+        "type": "string",
+        "desc": "Sorting key. Enum values: `Title` / `DueDate` / `CreatedAt` / `UpdatedAt` / `Status`.",
+        "raw_name": "SortBy",
+        "raw_type": "string",
+        "field_id": 10,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty,oneof=Title DueDate CreatedAt UpdatedAt Status\""
+          }
+        ]
+      },
+      "SortOrder": {
+        "type": "string",
+        "desc": "Sorting order. Enum values: `Desc` / `Asc`.",
+        "raw_name": "SortOrder",
+        "raw_type": "string",
+        "field_id": 11,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty,sortOrder\""
+          }
+        ]
+      },
+      "PageToken": {
+        "type": "string",
+        "desc": "Pagination cursor. Returns the first page if empty.",
+        "raw_name": "PageToken",
+        "raw_type": "string",
+        "field_id": 20,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "PageSize": {
+        "type": "int",
+        "desc": "Pagination size. Maximum 100. default is 10.",
+        "raw_name": "PageSize",
+        "raw_type": "i32",
+        "field_id": 21,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"gte=1\""
+          }
+        ]
+      },
+      "Selector": {
+        "type": "object",
+        "desc": "Additional information to be assembled with the issue data.",
+        "raw_name": "Selector",
+        "raw_type": "api/kitex/issue.IssueSelector",
+        "field_id": 30,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": "api/kitex/issue.IssueSelector"
+      }
+    },
+    "filename": "api/kitex/search.thrift",
+    "req_type": "api/kitex/search.SearchIssuesRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "Issues": {
+          "type": "array",
+          "desc": "List of issues matching the query.",
+          "raw_name": "Issues",
+          "raw_type": "list",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null,
+          "children": {
+            "0": {
+              "type": "object",
+              "desc": null,
+              "raw_name": null,
+              "raw_type": "api/kitex/issue.Issue",
+              "field_id": null,
+              "optional": null,
+              "raw_optional": null,
+              "ref_name": "api/kitex/issue.Issue"
+            }
+          }
+        },
+        "NextPageToken": {
+          "type": "string",
+          "desc": "Pagination token for the next page. Empty if no more results.",
+          "raw_name": "NextPageToken",
+          "raw_type": "string",
+          "field_id": 2,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null
+        }
+      },
+      "filename": "api/kitex/search.thrift",
+      "resp_type": "api/kitex/search.SearchIssuesResponse"
+    }
+  }
+}

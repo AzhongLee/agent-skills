@@ -1,0 +1,115 @@
+{
+  "endpoint_id": 2939639,
+  "method": "POST",
+  "path": "/CreateLabel",
+  "level": 1,
+  "name": "CreateLabel",
+  "note": "",
+  "rpc_method": "CreateLabel",
+  "owner": "jiangyunong",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 90,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "1"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.label:write"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 249321,
+  "newest": 1,
+  "branch": "master",
+  "folder": "label",
+  "req_schema": {
+    "body_param": {
+      "RepoId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty,id\" resource:\"repo_id\" db:\"shard_key\""
+          }
+        ]
+      },
+      "Name": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "Name",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "Color": {
+        "type": "string",
+        "desc": "In hexadecimal format (e.g. #FFFFFF).",
+        "raw_name": "Color",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "Description": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "Description",
+        "raw_type": "string",
+        "field_id": 4,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      }
+    },
+    "filename": "api/kitex/label.thrift",
+    "req_type": "api/kitex/label.CreateLabelRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "Label": {
+          "type": "object",
+          "desc": null,
+          "raw_name": "Label",
+          "raw_type": "api/kitex/label.Label",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": "api/kitex/label.Label"
+        }
+      },
+      "filename": "api/kitex/label.thrift",
+      "resp_type": "api/kitex/label.CreateLabelResponse"
+    }
+  }
+}

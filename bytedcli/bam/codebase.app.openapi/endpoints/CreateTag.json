@@ -1,0 +1,121 @@
+{
+  "endpoint_id": 2404318,
+  "method": "POST",
+  "path": "/CreateTag",
+  "level": 0,
+  "name": "CreateTag",
+  "note": "Create tag.",
+  "rpc_method": "CreateTag",
+  "owner": "qianjingtao.qjt",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 110,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "0"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.content:write"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 201643,
+  "newest": 1,
+  "branch": "master",
+  "folder": "vcs",
+  "req_schema": {
+    "body_param": {
+      "RepoId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "resource:\"repo_id\""
+          }
+        ]
+      },
+      "Name": {
+        "type": "string",
+        "desc": "New tag name.",
+        "raw_name": "Name",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"max=255\""
+          }
+        ]
+      },
+      "Revision": {
+        "type": "string",
+        "desc": "The branch/commit/tag to create new tag from.",
+        "raw_name": "Revision",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "Message": {
+        "type": "string",
+        "desc": "Specify a message to create an annotated tag.",
+        "raw_name": "Message",
+        "raw_type": "string",
+        "field_id": 4,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      }
+    },
+    "filename": "api/kitex/vcs.thrift",
+    "req_type": "api/kitex/vcs.CreateTagRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "Tag": {
+          "type": "object",
+          "desc": null,
+          "raw_name": "Tag",
+          "raw_type": "api/kitex/vcs.Tag",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": "api/kitex/vcs.Tag"
+        }
+      },
+      "filename": "api/kitex/vcs.thrift",
+      "resp_type": "api/kitex/vcs.CreateTagResponse"
+    }
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "endpoint_id": 2663762,
+  "method": "POST",
+  "path": "/ListInstalledApps",
+  "level": 1,
+  "name": "ListInstalledApps",
+  "note": "",
+  "rpc_method": "ListInstalledApps",
+  "owner": "jiangyunong",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 90,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "1"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "openapi,read"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo:read"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 225574,
+  "newest": 1,
+  "branch": "master",
+  "folder": "settings",
+  "req_schema": {
+    "body_param": {
+      "TargetType": {
+        "type": "string",
+        "desc": "Type of the target where apps are installed: `repository` / `namespace` / `instance`.",
+        "raw_name": "TargetType",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"oneof=repository namespace instance\""
+          }
+        ]
+      },
+      "TargetId": {
+        "type": "string",
+        "desc": "Identifier of the target.",
+        "raw_name": "TargetId",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "resource:\"target_id\""
+          }
+        ]
+      },
+      "WithInheritance": {
+        "type": "bool",
+        "desc": "Whether to include inherited app installations.",
+        "raw_name": "WithInheritance",
+        "raw_type": "bool",
+        "field_id": 3,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "WithAvatarURL": {
+        "type": "bool",
+        "desc": "Whether to include avatar url for apps.",
+        "raw_name": "WithAvatarURL",
+        "raw_type": "bool",
+        "field_id": 4,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      }
+    },
+    "filename": "api/kitex/settings.thrift",
+    "req_type": "api/kitex/settings.ListInstalledAppsRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "AppInstallations": {
+          "type": "array",
+          "desc": "List of installed apps.",
+          "raw_name": "AppInstallations",
+          "raw_type": "list",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null,
+          "children": {
+            "0": {
+              "type": "object",
+              "desc": null,
+              "raw_name": null,
+              "raw_type": "api/kitex/settings.AppInstalltion",
+              "field_id": null,
+              "optional": null,
+              "raw_optional": null,
+              "ref_name": "api/kitex/settings.AppInstalltion"
+            }
+          }
+        }
+      },
+      "filename": "api/kitex/settings.thrift",
+      "resp_type": "api/kitex/settings.ListInstalledAppsResponse"
+    }
+  }
+}

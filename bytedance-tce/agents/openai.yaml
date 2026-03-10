@@ -1,0 +1,4 @@
+interface:
+  display_name: "ByteDance TCE"
+  short_description: "List TCE services/clusters via bytedcli"
+  default_prompt: "Use $bytedance-tce to list services or fetch cluster info."

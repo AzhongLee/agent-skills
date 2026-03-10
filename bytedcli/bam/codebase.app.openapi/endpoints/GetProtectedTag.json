@@ -1,0 +1,105 @@
+{
+  "endpoint_id": 2404322,
+  "method": "POST",
+  "path": "/GetProtectedTag",
+  "level": 0,
+  "name": "GetProtectedTag",
+  "note": "",
+  "rpc_method": "GetProtectedTag",
+  "owner": "qianjingtao.qjt",
+  "updater": "lijinxing.x",
+  "modify_time": 1769758372,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 110,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "0"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "read,openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.protected_tag:read"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 201639,
+  "newest": 1,
+  "branch": "master",
+  "folder": "protected_tag",
+  "req_schema": {
+    "body_param": {
+      "RepoId": {
+        "type": "string",
+        "desc": "Repository ID where the protected tag belongs to.",
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"id\" db:\"shard_key\" resource:\"repo_id\""
+          }
+        ]
+      },
+      "Id": {
+        "type": "string",
+        "desc": "ID of the protected tag to retrieve.",
+        "raw_name": "Id",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "NamePattern": {
+        "type": "string",
+        "desc": "Name pattern of the protected tag to retrieve.",
+        "raw_name": "NamePattern",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      }
+    },
+    "filename": "api/kitex/protected_tag.thrift",
+    "req_type": "api/kitex/protected_tag.GetProtectedTagRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "ProtectedTag": {
+          "type": "object",
+          "desc": "Details of the retrieved protected tag.",
+          "raw_name": "ProtectedTag",
+          "raw_type": "api/kitex/protected_tag.ProtectedTag",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": "api/kitex/protected_tag.ProtectedTag"
+        }
+      },
+      "filename": "api/kitex/protected_tag.thrift",
+      "resp_type": "api/kitex/protected_tag.GetProtectedTagResponse"
+    }
+  }
+}

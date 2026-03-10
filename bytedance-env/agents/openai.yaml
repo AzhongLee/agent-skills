@@ -1,0 +1,4 @@
+interface:
+  display_name: "ByteDance ENV"
+  short_description: "ENV platform lifecycle env queries via bytedcli"
+  default_prompt: "Use $bytedance-env to list starred/managed envs and search env by identifier or service across sites."

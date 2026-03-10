@@ -1,0 +1,147 @@
+{
+  "endpoint_id": 2404351,
+  "method": "POST",
+  "path": "/GetMergeRequestMergeability",
+  "level": 0,
+  "name": "GetMergeRequestMergeability",
+  "note": "",
+  "rpc_method": "GetMergeRequestMergeability",
+  "owner": "qianjingtao.qjt",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 110,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "0"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "read,openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.merge_request:read"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 330162,
+  "newest": 1,
+  "branch": "master",
+  "folder": "merge_request",
+  "req_schema": {
+    "body_param": {
+      "RepoId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"id\" db:\"shard_key\" resource:\"repo_id\""
+          }
+        ]
+      },
+      "Id": {
+        "type": "string",
+        "desc": "Merge request ID.",
+        "raw_name": "Id",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"required_without=Number\""
+          }
+        ]
+      },
+      "Number": {
+        "type": "int",
+        "desc": "Merge request number, required if `Id` is not provided.",
+        "raw_name": "Number",
+        "raw_type": "i32",
+        "field_id": 3,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"required_without=Id\""
+          }
+        ]
+      }
+    },
+    "filename": "api/kitex/merge_request.thrift",
+    "req_type": "api/kitex/merge_request.GetMergeRequestMergeabilityRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "Mergeable": {
+          "type": "bool",
+          "desc": "Deprecated. Whether the merge request is mergeable.",
+          "raw_name": "Mergeable",
+          "raw_type": "bool",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null
+        },
+        "Reason": {
+          "type": "string",
+          "desc": "Deprecated. Reason why the merge request is not mergeable, if applicable.",
+          "raw_name": "Reason",
+          "raw_type": "string",
+          "field_id": 2,
+          "optional": true,
+          "raw_optional": true,
+          "ref_name": null
+        },
+        "ReasonDetail": {
+          "type": "string",
+          "desc": "Deprecated. Additional details about the unmergeable reason.",
+          "raw_name": "ReasonDetail",
+          "raw_type": "string",
+          "field_id": 3,
+          "optional": true,
+          "raw_optional": true,
+          "ref_name": null
+        },
+        "Mergeability": {
+          "type": "object",
+          "desc": "Comprehensive mergeability information for the merge request.",
+          "raw_name": "Mergeability",
+          "raw_type": "api/kitex/merge_request.Mergeability",
+          "field_id": 4,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": "api/kitex/merge_request.Mergeability"
+        }
+      },
+      "filename": "api/kitex/merge_request.thrift",
+      "resp_type": "api/kitex/merge_request.GetMergeRequestMergeabilityResponse"
+    }
+  }
+}

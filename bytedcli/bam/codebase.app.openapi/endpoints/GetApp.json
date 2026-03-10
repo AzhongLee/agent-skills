@@ -1,0 +1,117 @@
+{
+  "endpoint_id": 3021562,
+  "method": "POST",
+  "path": "/GetApp",
+  "level": 1,
+  "name": "GetApp",
+  "note": "For apps, some fields will be ignored and the app itself will be returned.",
+  "rpc_method": "GetApp",
+  "owner": "qianjingtao.qjt",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 90,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "1"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "read,openapi"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 256410,
+  "newest": 1,
+  "branch": "master",
+  "folder": "app",
+  "req_schema": {
+    "body_param": {
+      "Id": {
+        "type": "string",
+        "desc": "App ID.",
+        "raw_name": "Id",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "Name": {
+        "type": "string",
+        "desc": "Name of the app.",
+        "raw_name": "Name",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "Properties": {
+        "type": "bool",
+        "desc": "Whether to retrieve custom properties of the app.",
+        "raw_name": "Properties",
+        "raw_type": "bool",
+        "field_id": 3,
+        "optional": true,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "PropertyNames": {
+        "type": "array",
+        "desc": "Names of specific properties to retrieve. Ignored if `Properties` is false.",
+        "raw_name": "PropertyNames",
+        "raw_type": "list",
+        "field_id": 4,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "string",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "string",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null
+          }
+        }
+      }
+    },
+    "filename": "api/kitex/app.thrift",
+    "req_type": "api/kitex/app.GetAppRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "App": {
+          "type": "object",
+          "desc": null,
+          "raw_name": "App",
+          "raw_type": "api/kitex/app.App",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": "api/kitex/app.App"
+        }
+      },
+      "filename": "api/kitex/app.thrift",
+      "resp_type": "api/kitex/app.GetAppResponse"
+    }
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "ByteDance Overpass"
+  short_description: "IDL codegen via Overpass using bytedcli"
+  default_prompt: "Use $bytedance-overpass to sync IDL and generate code."

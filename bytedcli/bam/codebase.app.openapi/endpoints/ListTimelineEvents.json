@@ -1,0 +1,133 @@
+{
+  "endpoint_id": 2404358,
+  "method": "POST",
+  "path": "/ListTimelineEvents",
+  "level": 0,
+  "name": "ListTimelineEvents",
+  "note": "",
+  "rpc_method": "ListTimelineEvents",
+  "owner": "qianjingtao.qjt",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 110,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "0"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "read,openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.merge_request:read"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 201649,
+  "newest": 1,
+  "branch": "master",
+  "folder": "timeline",
+  "req_schema": {
+    "body_param": {
+      "TrackableType": {
+        "type": "string",
+        "desc": "Enum values: `merge_request`, `issue`.",
+        "raw_name": "TrackableType",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "TrackableId": {
+        "type": "string",
+        "desc": "Identifier of the tracked object associated with this event.",
+        "raw_name": "TrackableId",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"id\""
+          }
+        ]
+      },
+      "RepoId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty,id\" db:\"shard_key\" resource:\"repo_id\""
+          }
+        ]
+      },
+      "For1024": {
+        "type": "bool",
+        "desc": "If true, fetch user comments and return first N + last N events.",
+        "raw_name": "For1024",
+        "raw_type": "bool",
+        "field_id": 4,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      }
+    },
+    "filename": "api/kitex/timeline.thrift",
+    "req_type": "api/kitex/timeline.ListEventsRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "Events": {
+          "type": "array",
+          "desc": null,
+          "raw_name": "Events",
+          "raw_type": "list",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null,
+          "children": {
+            "0": {
+              "type": "object",
+              "desc": null,
+              "raw_name": null,
+              "raw_type": "api/kitex/timeline.Event",
+              "field_id": null,
+              "optional": null,
+              "raw_optional": null,
+              "ref_name": "api/kitex/timeline.Event"
+            }
+          }
+        }
+      },
+      "filename": "api/kitex/timeline.thrift",
+      "resp_type": "api/kitex/timeline.ListEventsResponse"
+    }
+  }
+}

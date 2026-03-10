@@ -1,0 +1,165 @@
+{
+  "endpoint_id": 3321411,
+  "method": "POST",
+  "path": "/SearchMergeRequests",
+  "level": 1,
+  "name": "SearchMergeRequests",
+  "note": "",
+  "rpc_method": "SearchMergeRequests",
+  "owner": "lijinxing.x",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 90,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "1"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "read,openapi"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 271146,
+  "newest": 1,
+  "branch": "master",
+  "folder": "search",
+  "req_schema": {
+    "body_param": {
+      "Filter": {
+        "type": "object",
+        "desc": "MergeRequestFilter is used to filter merge requests based on various conditions.\n\n- **Default Behavior**:\n- All fields in a filter are combined with an implicit `AND` relationship.\n- For example, if multiple fields like `SourceBranch` and `Status` are provided,\nthe filter will only match merge requests that satisfy all specified conditions.\n\n- **Boolean Logic Support**:\n- Use `AND`, `OR`, and `NOT` fields to construct complex filter logic.\n- Each field accepts one or more nested `MergeRequestFilter` objects, allowing for\nrecursive combinations of conditions.\n- `IN` logic is supported for array fields (e.g. `Labels`, `CommitIds`) implicitly.\n\n**Examples**:\n1. To filter merge requests with `SourceBranch=\"main\"` **AND** `Status=\"merged\"`, set:\n```json\n{\n\"SourceBranch\": \"main\",\n\"Status\": \"merged\"\n}\n```\n\n2. To filter merge requests with `SourceBranch=\"main\"` **OR** `TargetBranch=\"release\"`, set:\n```json\n{\n\"Or\": [\n{ \"SourceBranch\": \"main\" },\n{ \"TargetBranch\": \"release\" }\n]\n}\n```\n\n3. To filter merge requests with (`Status=\"merged\"` **OR** `Status=\"closed\"`) **AND**\n(`AuthorId=\"123\"` **OR** `TargetBranch=\"release\"`), set:\n```json\n{\n\"And\": [\n{\n\"Or\": [\n{ \"Status\": \"merged\" },\n{ \"Status\": \"closed\" }\n]\n},\n{\n\"Or\": [\n{ \"AuthorId\": \"123\" },\n{ \"TargetBranch\": \"release\" }\n]\n}\n]\n}\n```\n\n4. To exclude merge requests with `Labels include \"wip\"` while matching `AuthorId=\"123\"`, set:\n```json\n{\n\"AuthorId\": \"123\",\n\"Not\": {\n\"Label\": \"wip\"\n},\n}\n```\n\n**Structure Fields**:\n- Use `And`, `Or`, and `Not` to create complex boolean combinations.\n- Direct fields (e.g. `AuthorId`, `Status`) apply filters directly to merge requests.",
+        "raw_name": "Filter",
+        "raw_type": "api/kitex/search.MergeRequestFilter",
+        "field_id": 1,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": "api/kitex/search.MergeRequestFilter"
+      },
+      "SortBy": {
+        "type": "string",
+        "desc": "Sorting key. Enum values: `CreatedAt` / `UpdatedAt`.",
+        "raw_name": "SortBy",
+        "raw_type": "string",
+        "field_id": 10,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty,oneof=CreatedAt UpdatedAt\""
+          }
+        ]
+      },
+      "SortOrder": {
+        "type": "string",
+        "desc": "Sorting order. Enum values: `Desc` / `Asc`.",
+        "raw_name": "SortOrder",
+        "raw_type": "string",
+        "field_id": 11,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty,sortOrder\""
+          }
+        ]
+      },
+      "PageToken": {
+        "type": "string",
+        "desc": "Pagination cursor. Returns the first page if empty.",
+        "raw_name": "PageToken",
+        "raw_type": "string",
+        "field_id": 20,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "PageSize": {
+        "type": "int",
+        "desc": "Number of results per page. Maximum 100, default is 10.",
+        "raw_name": "PageSize",
+        "raw_type": "i32",
+        "field_id": 21,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"gte=1\""
+          }
+        ]
+      },
+      "Selector": {
+        "type": "object",
+        "desc": "Additional information to be assembled with the merge request data.",
+        "raw_name": "Selector",
+        "raw_type": "api/kitex/merge_request.MergeRequestSelector",
+        "field_id": 30,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": "api/kitex/merge_request.MergeRequestSelector"
+      }
+    },
+    "filename": "api/kitex/search.thrift",
+    "req_type": "api/kitex/search.SearchMergeRequestsRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "MergeRequests": {
+          "type": "array",
+          "desc": "List of merge requests matching the query.",
+          "raw_name": "MergeRequests",
+          "raw_type": "list",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null,
+          "children": {
+            "0": {
+              "type": "object",
+              "desc": null,
+              "raw_name": null,
+              "raw_type": "api/kitex/merge_request.MergeRequest",
+              "field_id": null,
+              "optional": null,
+              "raw_optional": null,
+              "ref_name": "api/kitex/merge_request.MergeRequest"
+            }
+          }
+        },
+        "NextPageToken": {
+          "type": "string",
+          "desc": "Pagination token for the next page. Empty if no more results.",
+          "raw_name": "NextPageToken",
+          "raw_type": "string",
+          "field_id": 2,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null
+        }
+      },
+      "filename": "api/kitex/search.thrift",
+      "resp_type": "api/kitex/search.SearchMergeRequestsResponse"
+    }
+  }
+}

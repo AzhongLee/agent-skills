@@ -1,0 +1,217 @@
+{
+  "endpoint_id": 2404329,
+  "method": "POST",
+  "path": "/UpdateReviewers",
+  "level": 0,
+  "name": "UpdateReviewers",
+  "note": "",
+  "rpc_method": "UpdateReviewers",
+  "owner": "qianjingtao.qjt",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 110,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "0"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.merge_request.review:write"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 201641,
+  "newest": 1,
+  "branch": "master",
+  "folder": "review",
+  "req_schema": {
+    "body_param": {
+      "MergeRequestId": {
+        "type": "string",
+        "desc": "ID of the merge request.",
+        "raw_name": "MergeRequestId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "ReviewerIds": {
+        "type": "array",
+        "desc": "Deprecated: use `SetReviewers` instead.",
+        "raw_name": "ReviewerIds",
+        "raw_type": "list",
+        "field_id": 2,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "string",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "string",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null
+          }
+        }
+      },
+      "RepoId": {
+        "type": "string",
+        "desc": "Repository ID containing the merge request.",
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"id\" db:\"shard_key\" resource:\"repo_id\""
+          }
+        ]
+      },
+      "AddReviewerIds": {
+        "type": "array",
+        "desc": "Deprecated: use `AddReviewers` instead.",
+        "raw_name": "AddReviewerIds",
+        "raw_type": "list",
+        "field_id": 4,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "string",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "string",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null
+          }
+        }
+      },
+      "RemoveReviewerIds": {
+        "type": "array",
+        "desc": "User IDs of the reviewers to remove",
+        "raw_name": "RemoveReviewerIds",
+        "raw_type": "list",
+        "field_id": 5,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "string",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "string",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null
+          }
+        }
+      },
+      "SetReviewers": {
+        "type": "array",
+        "desc": "List of reviewers to set, including their required status.",
+        "raw_name": "SetReviewers",
+        "raw_type": "list",
+        "field_id": 6,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "object",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "api/kitex/review.ReviewerInput",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": "api/kitex/review.ReviewerInput"
+          }
+        }
+      },
+      "AddReviewers": {
+        "type": "array",
+        "desc": "List of reviewers to add, including their required status.",
+        "raw_name": "AddReviewers",
+        "raw_type": "list",
+        "field_id": 7,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "object",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "api/kitex/review.ReviewerInput",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": "api/kitex/review.ReviewerInput"
+          }
+        }
+      }
+    },
+    "filename": "api/kitex/review.thrift",
+    "req_type": "api/kitex/review.UpdateReviewersRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "Reviewers": {
+          "type": "array",
+          "desc": "Updated list of reviewers for the merge request.",
+          "raw_name": "Reviewers",
+          "raw_type": "list",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null,
+          "children": {
+            "0": {
+              "type": "object",
+              "desc": null,
+              "raw_name": null,
+              "raw_type": "api/kitex/review.Reviewer",
+              "field_id": null,
+              "optional": null,
+              "raw_optional": null,
+              "ref_name": "api/kitex/review.Reviewer"
+            }
+          }
+        }
+      },
+      "filename": "api/kitex/review.thrift",
+      "resp_type": "api/kitex/review.UpdateReviewersResponse"
+    }
+  }
+}

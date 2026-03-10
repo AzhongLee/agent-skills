@@ -1,0 +1,137 @@
+{
+  "endpoint_id": 2404315,
+  "method": "POST",
+  "path": "/ListDiffFiles",
+  "level": 0,
+  "name": "ListDiffFiles",
+  "note": "List diff files info of the given two commits.",
+  "rpc_method": "ListDiffFiles",
+  "owner": "qianjingtao.qjt",
+  "updater": "lijinxing.x",
+  "modify_time": 1769758372,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 110,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "0"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "read,openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.content:read"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 201643,
+  "newest": 1,
+  "branch": "master",
+  "folder": "vcs",
+  "req_schema": {
+    "body_param": {
+      "RepoId": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "resource:\"repo_id\""
+          }
+        ]
+      },
+      "FromCommit": {
+        "type": "string",
+        "desc": "If FromCommit is empty, it will be set to the to the first parent commit.",
+        "raw_name": "FromCommit",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "ToCommit": {
+        "type": "string",
+        "desc": null,
+        "raw_name": "ToCommit",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "IsStraight": {
+        "type": "bool",
+        "desc": "Diff directly or based on merge base.",
+        "raw_name": "IsStraight",
+        "raw_type": "bool",
+        "field_id": 4,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "RawStatOnly": {
+        "type": "bool",
+        "desc": "If set true, it will only return the file names without calculating the number of lines inserted and deleted, and will be faster.",
+        "raw_name": "RawStatOnly",
+        "raw_type": "bool",
+        "field_id": 5,
+        "optional": true,
+        "raw_optional": null,
+        "ref_name": null
+      }
+    },
+    "filename": "api/kitex/vcs.thrift",
+    "req_type": "api/kitex/vcs.ListDiffFilesRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "Files": {
+          "type": "array",
+          "desc": "May be empty.",
+          "raw_name": "Files",
+          "raw_type": "list",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null,
+          "children": {
+            "0": {
+              "type": "object",
+              "desc": null,
+              "raw_name": null,
+              "raw_type": "api/kitex/vcs.DiffFileMeta",
+              "field_id": null,
+              "optional": null,
+              "raw_optional": null,
+              "ref_name": "api/kitex/vcs.DiffFileMeta"
+            }
+          }
+        }
+      },
+      "filename": "api/kitex/vcs.thrift",
+      "resp_type": "api/kitex/vcs.ListDiffFilesResponse"
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "endpoint_id": 2927868,
+  "method": "POST",
+  "path": "/Revert",
+  "level": 1,
+  "name": "Revert",
+  "note": "Revert a commit to target branch",
+  "rpc_method": "Revert",
+  "owner": "lijinxing.x",
+  "updater": "lijinxing.x",
+  "modify_time": 1770057205,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 90,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "1"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.content:write"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 201643,
+  "newest": 1,
+  "branch": "master",
+  "folder": "vcs",
+  "req_schema": {
+    "body_param": {
+      "RepoId": {
+        "type": "string",
+        "desc": "RepoId is the unique identifier of the repository.",
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "resource:\"repo_id\""
+          }
+        ]
+      },
+      "TargetBranch": {
+        "type": "string",
+        "desc": "TargetBranch is the branch into which the commit will be reverted.",
+        "raw_name": "TargetBranch",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "CommitId": {
+        "type": "string",
+        "desc": "CommitId is the identifier of the commit to revert.",
+        "raw_name": "CommitId",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "CommitMessage": {
+        "type": "string",
+        "desc": "CommitMessage is an optional custom message for the revert commit.",
+        "raw_name": "CommitMessage",
+        "raw_type": "string",
+        "field_id": 4,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      }
+    },
+    "filename": "api/kitex/vcs.thrift",
+    "req_type": "api/kitex/vcs.RevertRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "CommitId": {
+          "type": "string",
+          "desc": "CommitId is the identifier of the new commit created by the revert operation.",
+          "raw_name": "CommitId",
+          "raw_type": "string",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null
+        }
+      },
+      "filename": "api/kitex/vcs.thrift",
+      "resp_type": "api/kitex/vcs.RevertResponse"
+    }
+  }
+}

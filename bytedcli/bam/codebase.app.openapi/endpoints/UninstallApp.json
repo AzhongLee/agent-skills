@@ -1,0 +1,93 @@
+{
+  "endpoint_id": 2663761,
+  "method": "POST",
+  "path": "/UninstallApp",
+  "level": 1,
+  "name": "UninstallApp",
+  "note": "",
+  "rpc_method": "UninstallApp",
+  "owner": "jiangyunong",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 90,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "1"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo:configure"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 225574,
+  "newest": 1,
+  "branch": "master",
+  "folder": "settings",
+  "req_schema": {
+    "body_param": {
+      "TargetType": {
+        "type": "string",
+        "desc": "Type of the target for app uninstallation: `repository` / `namespace` / `instance`.",
+        "raw_name": "TargetType",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "TargetId": {
+        "type": "string",
+        "desc": "Identifier of the target.",
+        "raw_name": "TargetId",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "resource:\"target_id\""
+          }
+        ]
+      },
+      "AppId": {
+        "type": "string",
+        "desc": "Identifier of the app to uninstall.",
+        "raw_name": "AppId",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      }
+    },
+    "filename": "api/kitex/settings.thrift",
+    "req_type": "api/kitex/settings.UninstallAppRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "filename": "api/kitex/settings.thrift",
+      "resp_type": "api/kitex/settings.UninstallAppResponse"
+    }
+  }
+}

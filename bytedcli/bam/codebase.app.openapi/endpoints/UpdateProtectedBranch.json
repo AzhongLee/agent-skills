@@ -1,0 +1,407 @@
+{
+  "endpoint_id": 2404339,
+  "method": "POST",
+  "path": "/UpdateProtectedBranch",
+  "level": 1,
+  "name": "UpdateProtectedBranch",
+  "note": "",
+  "rpc_method": "UpdateProtectedBranch",
+  "owner": "qianjingtao.qjt",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 90,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "1"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.protected_branch:write"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 201640,
+  "newest": 1,
+  "branch": "master",
+  "folder": "protected_branch",
+  "req_schema": {
+    "body_param": {
+      "RepoId": {
+        "type": "string",
+        "desc": "Repository ID where the protected branch exists.",
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"id\" db:\"shard_key\" resource:\"repo_id\""
+          }
+        ]
+      },
+      "Id": {
+        "type": "string",
+        "desc": "ID of the protected branch to update.",
+        "raw_name": "Id",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "NamePattern": {
+        "type": "string",
+        "desc": "Updates branch name pattern. Maximum length is 255 characters.",
+        "raw_name": "NamePattern",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty,max=255\""
+          }
+        ]
+      },
+      "CreateAccess": {
+        "type": "array",
+        "desc": "Updates access requirements for creating branches matching this pattern.",
+        "raw_name": "CreateAccess",
+        "raw_type": "list",
+        "field_id": 4,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "object",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "api/kitex/account.UserSelector",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": "api/kitex/account.UserSelector"
+          }
+        }
+      },
+      "MergeAccess": {
+        "type": "array",
+        "desc": "Updates access requirements for merging into branches matching this pattern.",
+        "raw_name": "MergeAccess",
+        "raw_type": "list",
+        "field_id": 5,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "object",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "api/kitex/account.UserSelector",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": "api/kitex/account.UserSelector"
+          }
+        }
+      },
+      "PushAccess": {
+        "type": "array",
+        "desc": "Updates access requirements for pushing to branches matching this pattern.",
+        "raw_name": "PushAccess",
+        "raw_type": "list",
+        "field_id": 6,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "object",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "api/kitex/account.UserSelector",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": "api/kitex/account.UserSelector"
+          }
+        }
+      },
+      "ForcePushAccess": {
+        "type": "array",
+        "desc": "Updates access requirements for force-pushing to branches matching this pattern.",
+        "raw_name": "ForcePushAccess",
+        "raw_type": "list",
+        "field_id": 7,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "object",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "api/kitex/account.UserSelector",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": "api/kitex/account.UserSelector"
+          }
+        }
+      },
+      "DeleteAccess": {
+        "type": "array",
+        "desc": "Updates access requirements for deleting branches matching this pattern.",
+        "raw_name": "DeleteAccess",
+        "raw_type": "list",
+        "field_id": 8,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "object",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "api/kitex/account.UserSelector",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": "api/kitex/account.UserSelector"
+          }
+        }
+      },
+      "BypassAccess": {
+        "type": "array",
+        "desc": "Updates access requirements for bypassing branches matching this pattern.",
+        "raw_name": "BypassAccess",
+        "raw_type": "list",
+        "field_id": 9,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "object",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "api/kitex/account.UserSelector",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": "api/kitex/account.UserSelector"
+          }
+        }
+      },
+      "AllowCodeOwnerBypass": {
+        "type": "bool",
+        "desc": "Updates whether code owners can bypass the merge request when all changes are within their ownership scope.",
+        "raw_name": "AllowCodeOwnerBypass",
+        "raw_type": "bool",
+        "field_id": 10,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "RequireReview": {
+        "type": "bool",
+        "desc": "Updates whether reviews are required.",
+        "raw_name": "RequireReview",
+        "raw_type": "bool",
+        "field_id": 11,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "ReviewRules": {
+        "type": "array",
+        "desc": "Updates custom review rules.",
+        "raw_name": "ReviewRules",
+        "raw_type": "list",
+        "field_id": 12,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "object",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "api/kitex/review.ReviewRule",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": "api/kitex/review.ReviewRule"
+          }
+        }
+      },
+      "RequireCodeOwnerReview": {
+        "type": "bool",
+        "desc": "Updates whether code owner reviews are required.",
+        "raw_name": "RequireCodeOwnerReview",
+        "raw_type": "bool",
+        "field_id": 13,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "AllowAuthorApproval": {
+        "type": "bool",
+        "desc": "Updates whether the merge request author is allowed to approve their own MR.",
+        "raw_name": "AllowAuthorApproval",
+        "raw_type": "bool",
+        "field_id": 14,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "ApprovalResetLevel": {
+        "type": "string",
+        "desc": "Updates reset level for approvals after changes are made.",
+        "raw_name": "ApprovalResetLevel",
+        "raw_type": "string",
+        "field_id": 15,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "RequireCheckRunPass": {
+        "type": "bool",
+        "desc": "Updates whether passing CheckRuns is required.",
+        "raw_name": "RequireCheckRunPass",
+        "raw_type": "bool",
+        "field_id": 16,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "CheckRunRules": {
+        "type": "array",
+        "desc": "Updates list of CheckRun rules.",
+        "raw_name": "CheckRunRules",
+        "raw_type": "list",
+        "field_id": 17,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "object",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "api/kitex/protected_branch.CheckRunRule",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": "api/kitex/protected_branch.CheckRunRule"
+          }
+        }
+      },
+      "RequireThreadResolution": {
+        "type": "bool",
+        "desc": "Whether all comments must be resolved or closed before merging.",
+        "raw_name": "RequireThreadResolution",
+        "raw_type": "bool",
+        "field_id": 18,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "RequireWorkItemLink": {
+        "type": "bool",
+        "desc": "Whether at least one work item must be linked to the MR.",
+        "raw_name": "RequireWorkItemLink",
+        "raw_type": "bool",
+        "field_id": 19,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "RequireMergeQueue": {
+        "type": "bool",
+        "desc": "Whether the merge request must be merged via the Merge Queue.",
+        "raw_name": "RequireMergeQueue",
+        "raw_type": "bool",
+        "field_id": 20,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "MergeQueueSetting": {
+        "type": "object",
+        "desc": "Updates Merge Queue settings.",
+        "raw_name": "MergeQueueSetting",
+        "raw_type": "api/kitex/protected_branch.MergeQueueSetting",
+        "field_id": 21,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": "api/kitex/protected_branch.MergeQueueSetting"
+      },
+      "UseInheritedReviewRules": {
+        "type": "bool",
+        "desc": "Whether to use review ruleset of repository.",
+        "raw_name": "UseInheritedReviewRules",
+        "raw_type": "bool",
+        "field_id": 22,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "ReviewRulesetId": {
+        "type": "string",
+        "desc": "Updates Review ruleset ID of repository.",
+        "raw_name": "ReviewRulesetId",
+        "raw_type": "string",
+        "field_id": 23,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      }
+    },
+    "filename": "api/kitex/protected_branch.thrift",
+    "req_type": "api/kitex/protected_branch.UpdateProtectedBranchRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "ProtectedBranch": {
+          "type": "object",
+          "desc": "Updated protected branch.",
+          "raw_name": "ProtectedBranch",
+          "raw_type": "api/kitex/protected_branch.ProtectedBranch",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": "api/kitex/protected_branch.ProtectedBranch"
+        }
+      },
+      "filename": "api/kitex/protected_branch.thrift",
+      "resp_type": "api/kitex/protected_branch.UpdateProtectedBranchResponse"
+    }
+  }
+}

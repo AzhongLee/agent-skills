@@ -1,0 +1,343 @@
+{
+  "endpoint_id": 2404319,
+  "method": "POST",
+  "path": "/CreateMergeRequest",
+  "level": 0,
+  "name": "CreateMergeRequest",
+  "note": "",
+  "rpc_method": "CreateMergeRequest",
+  "owner": "qianjingtao.qjt",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 110,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "0"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.merge_request:write"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 330162,
+  "newest": 1,
+  "branch": "master",
+  "folder": "merge_request",
+  "req_schema": {
+    "body_param": {
+      "SourceRepoId": {
+        "type": "string",
+        "desc": "Source repository ID for the merge request.",
+        "raw_name": "SourceRepoId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"required\""
+          }
+        ]
+      },
+      "SourceBranch": {
+        "type": "string",
+        "desc": "Source branch name for the merge request.",
+        "raw_name": "SourceBranch",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"required\""
+          }
+        ]
+      },
+      "TargetRepoId": {
+        "type": "string",
+        "desc": "Target repository ID where the merge request will be created.",
+        "raw_name": "TargetRepoId",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "resource:\"repo_id\" db:\"shard_key\""
+          }
+        ]
+      },
+      "TargetBranch": {
+        "type": "string",
+        "desc": "Target branch name where the merge request will be merged.",
+        "raw_name": "TargetBranch",
+        "raw_type": "string",
+        "field_id": 4,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"required\""
+          }
+        ]
+      },
+      "Title": {
+        "type": "string",
+        "desc": "Title of the merge request.",
+        "raw_name": "Title",
+        "raw_type": "string",
+        "field_id": 5,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"required\""
+          }
+        ]
+      },
+      "Description": {
+        "type": "string",
+        "desc": "Optional description for the merge request.",
+        "raw_name": "Description",
+        "raw_type": "string",
+        "field_id": 6,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "MergeMethod": {
+        "type": "string",
+        "desc": "Merge method to be used. Enum values: `merge_commit`, `rebase_merge`, etc.",
+        "raw_name": "MergeMethod",
+        "raw_type": "string",
+        "field_id": 7,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"required\""
+          }
+        ]
+      },
+      "SquashCommits": {
+        "type": "bool",
+        "desc": "Whether to squash commits when merging the merge request.",
+        "raw_name": "SquashCommits",
+        "raw_type": "bool",
+        "field_id": 8,
+        "optional": true,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "MergeCommitMessage": {
+        "type": "string",
+        "desc": "Custom commit message for the merge commit.",
+        "raw_name": "MergeCommitMessage",
+        "raw_type": "string",
+        "field_id": 9,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "SquashCommitMessage": {
+        "type": "string",
+        "desc": "Custom commit message for the squash commit, if squashing is enabled.",
+        "raw_name": "SquashCommitMessage",
+        "raw_type": "string",
+        "field_id": 10,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "RemoveSourceBranchAfterMerge": {
+        "type": "bool",
+        "desc": "Whether to remove the source branch after the merge request is merged.",
+        "raw_name": "RemoveSourceBranchAfterMerge",
+        "raw_type": "bool",
+        "field_id": 11,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null
+      },
+      "ReviewerIds": {
+        "type": "array",
+        "desc": "List of user IDs to set as reviewers for the merge request.",
+        "raw_name": "ReviewerIds",
+        "raw_type": "list",
+        "field_id": 12,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "string",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "string",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null
+          }
+        }
+      },
+      "WorkItemIds": {
+        "type": "array",
+        "desc": "List of work item IDs to associate with the merge request.",
+        "raw_name": "WorkItemIds",
+        "raw_type": "list",
+        "field_id": 13,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "string",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "string",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null
+          }
+        }
+      },
+      "AutoInviteReviewers": {
+        "type": "bool",
+        "desc": "Automatically invite reviewers to the merge request. Defaults to `true`.",
+        "raw_name": "AutoInviteReviewers",
+        "raw_type": "bool",
+        "field_id": 14,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "Links": {
+        "type": "array",
+        "desc": "Optional links to associate with the merge request.",
+        "raw_name": "Links",
+        "raw_type": "list",
+        "field_id": 15,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "object",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "api/kitex/merge_request.MergeRequestLink",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": "api/kitex/merge_request.MergeRequestLink"
+          }
+        }
+      },
+      "AutoLinkWorkItems": {
+        "type": "bool",
+        "desc": "Automatically detect and associate work items with the merge request. Default: `false`.",
+        "raw_name": "AutoLinkWorkItems",
+        "raw_type": "bool",
+        "field_id": 16,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "Draft": {
+        "type": "bool",
+        "desc": "Whether the merge request is a draft.",
+        "raw_name": "Draft",
+        "raw_type": "bool",
+        "field_id": 17,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "LabelIds": {
+        "type": "array",
+        "desc": "List of label IDs to attach to the merge request.",
+        "raw_name": "LabelIds",
+        "raw_type": "list",
+        "field_id": 18,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "string",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "string",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null
+          }
+        }
+      },
+      "MilestoneId": {
+        "type": "string",
+        "desc": "Milestone ID to associate with the merge request.",
+        "raw_name": "MilestoneId",
+        "raw_type": "string",
+        "field_id": 19,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      }
+    },
+    "filename": "api/kitex/merge_request.thrift",
+    "req_type": "api/kitex/merge_request.CreateMergeRequestRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "MergeRequest": {
+          "type": "object",
+          "desc": "Details of the created merge request.",
+          "raw_name": "MergeRequest",
+          "raw_type": "api/kitex/merge_request.MergeRequest",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": "api/kitex/merge_request.MergeRequest"
+        }
+      },
+      "filename": "api/kitex/merge_request.thrift",
+      "resp_type": "api/kitex/merge_request.CreateMergeRequestResponse"
+    }
+  }
+}

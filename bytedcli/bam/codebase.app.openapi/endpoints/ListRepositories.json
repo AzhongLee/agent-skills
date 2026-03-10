@@ -1,0 +1,273 @@
+{
+  "endpoint_id": 2900525,
+  "method": "POST",
+  "path": "/ListRepositories",
+  "level": 1,
+  "name": "ListRepositories",
+  "note": "获取仓库列表",
+  "rpc_method": "ListRepositories",
+  "owner": "lijinxing.x",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 90,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "1"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "read,openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo:list"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 201645,
+  "newest": 1,
+  "branch": "master",
+  "folder": "repository",
+  "req_schema": {
+    "body_param": {
+      "Query": {
+        "type": "string",
+        "desc": "Filter repositories by name. Matches either the full repository name prefix or the prefix of the last segment in the name.",
+        "raw_name": "Query",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "PageNumber": {
+        "type": "int",
+        "desc": "Pagination number, starts from 1.",
+        "raw_name": "PageNumber",
+        "raw_type": "i32",
+        "field_id": 2,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty,gte=1\""
+          }
+        ]
+      },
+      "PageSize": {
+        "type": "int",
+        "desc": "Pagination size. Maximum 100, default is 10.",
+        "raw_name": "PageSize",
+        "raw_type": "i32",
+        "field_id": 3,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty,gte=1\""
+          }
+        ]
+      },
+      "Starred": {
+        "type": "bool",
+        "desc": "Deprecated. Whether to return repositories starred by the current user. Default is `false`. If `Starred` is specified, no other filters are allowed.",
+        "raw_name": "Starred",
+        "raw_type": "bool",
+        "field_id": 4,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "NamespaceId": {
+        "type": "string",
+        "desc": "Filter repositories by their namespace ID.",
+        "raw_name": "NamespaceId",
+        "raw_type": "string",
+        "field_id": 5,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty,id\""
+          }
+        ]
+      },
+      "Statuses": {
+        "type": "array",
+        "desc": "Filter repositories by their statuses. Possible values: `created` / `archived`.",
+        "raw_name": "Statuses",
+        "raw_type": "list",
+        "field_id": 6,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "string",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "string",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null
+          }
+        }
+      },
+      "ContributedById": {
+        "type": "string",
+        "desc": "Filter repositories by contributors. Requires that the specified user has contributed to the repository. If `ContributedById` is specified, no other filters are allowed.",
+        "raw_name": "ContributedById",
+        "raw_type": "string",
+        "field_id": 7,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "StarredById": {
+        "type": "string",
+        "desc": "Filter repositories by starred status. Requires that the specified user has starred the repository. If `StarredById` is specified, no other filters are allowed.",
+        "raw_name": "StarredById",
+        "raw_type": "string",
+        "field_id": 8,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "Selector": {
+        "type": "object",
+        "desc": "Selector to include additional repository details in the response.",
+        "raw_name": "Selector",
+        "raw_type": "api/kitex/repository.RepositorySelector",
+        "field_id": 9,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": "api/kitex/repository.RepositorySelector"
+      },
+      "SortBy": {
+        "type": "string",
+        "desc": "Sort results by either the last activity time (`LastActivityAt`) or repository path (`Path`).",
+        "raw_name": "SortBy",
+        "raw_type": "string",
+        "field_id": 10,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty,oneof=PushedAt Path LastActivityAt\""
+          }
+        ]
+      },
+      "SortOrder": {
+        "type": "string",
+        "desc": "Sort order: `Asc` or `Desc`.",
+        "raw_name": "SortOrder",
+        "raw_type": "string",
+        "field_id": 11,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty,sortOrder\""
+          }
+        ]
+      },
+      "HasWiki": {
+        "type": "bool",
+        "desc": "Filter repositories by whether they have wiki versions.",
+        "raw_name": "HasWiki",
+        "raw_type": "bool",
+        "field_id": 12,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      }
+    },
+    "filename": "api/kitex/repository.thrift",
+    "req_type": "api/kitex/repository.ListRepositoriesRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "Repositories": {
+          "type": "array",
+          "desc": "List of repositories matching the request criteria.",
+          "raw_name": "Repositories",
+          "raw_type": "list",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null,
+          "children": {
+            "0": {
+              "type": "object",
+              "desc": null,
+              "raw_name": null,
+              "raw_type": "api/kitex/repository.Repository",
+              "field_id": null,
+              "optional": null,
+              "raw_optional": null,
+              "ref_name": "api/kitex/repository.Repository"
+            }
+          }
+        },
+        "PageNumber": {
+          "type": "int",
+          "desc": "Page number echoed from the request (default value if not provided or illegal).",
+          "raw_name": "PageNumber",
+          "raw_type": "i32",
+          "field_id": 2,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null
+        },
+        "PageSize": {
+          "type": "int",
+          "desc": "Page size echoed from the request (default value if not provided or illegal).",
+          "raw_name": "PageSize",
+          "raw_type": "i32",
+          "field_id": 3,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null
+        },
+        "TotalCount": {
+          "type": "int",
+          "desc": "Total number of results matching the query.",
+          "raw_name": "TotalCount",
+          "raw_type": "i32",
+          "field_id": 4,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": null
+        }
+      },
+      "filename": "api/kitex/repository.thrift",
+      "resp_type": "api/kitex/repository.ListRepositoriesResponse"
+    }
+  }
+}

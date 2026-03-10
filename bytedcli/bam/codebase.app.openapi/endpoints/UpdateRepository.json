@@ -1,0 +1,493 @@
+{
+  "endpoint_id": 2404340,
+  "method": "POST",
+  "path": "/UpdateRepository",
+  "level": 1,
+  "name": "UpdateRepository",
+  "note": "更新仓库信息与设置",
+  "rpc_method": "UpdateRepository",
+  "owner": "qianjingtao.qjt",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 90,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "1"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "openapi"
+      },
+      {
+        "name": "vecode.scope",
+        "value": "repo.metadata:write"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 201645,
+  "newest": 1,
+  "branch": "master",
+  "folder": "repository",
+  "req_schema": {
+    "body_param": {
+      "RepoId": {
+        "type": "string",
+        "desc": "ID of the repository to update.",
+        "raw_name": "RepoId",
+        "raw_type": "string",
+        "field_id": 1,
+        "optional": null,
+        "raw_optional": null,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "resource:\"repo_id\""
+          }
+        ]
+      },
+      "Name": {
+        "type": "string",
+        "desc": "New name for the repository, need to follow the rules:\n- Length: 2 to 255 characters\n- Allowed characters: lowercase letters, numbers, underscores",
+        "raw_name": "Name",
+        "raw_type": "string",
+        "field_id": 2,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty,repoName\""
+          }
+        ]
+      },
+      "Desc": {
+        "type": "string",
+        "desc": "Updates description for the repository, maximum 500 characters.",
+        "raw_name": "Desc",
+        "raw_type": "string",
+        "field_id": 3,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty,max=500\""
+          }
+        ]
+      },
+      "DefaultBranch": {
+        "type": "string",
+        "desc": "Updates default branch for the repository.",
+        "raw_name": "DefaultBranch",
+        "raw_type": "string",
+        "field_id": 4,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "MergeMethod": {
+        "type": "string",
+        "desc": "Updates default merge method for merge requests.",
+        "raw_name": "MergeMethod",
+        "raw_type": "string",
+        "field_id": 5,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty\""
+          }
+        ]
+      },
+      "AllowedMergeMethods": {
+        "type": "array",
+        "desc": "Updates allowed merge methods for merge requests.",
+        "raw_name": "AllowedMergeMethods",
+        "raw_type": "list",
+        "field_id": 6,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "string",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "string",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null
+          }
+        }
+      },
+      "RemoveSourceBranchAfterMerge": {
+        "type": "bool",
+        "desc": "Updates whether to delete the source branch after merging.",
+        "raw_name": "RemoveSourceBranchAfterMerge",
+        "raw_type": "bool",
+        "field_id": 7,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "AllowedMergeRequestChangeModes": {
+        "type": "array",
+        "desc": "Updates allowed modes for changes in merge requests: `branch`, `commit`, `multi_commits`.",
+        "raw_name": "AllowedMergeRequestChangeModes",
+        "raw_type": "list",
+        "field_id": 8,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "string",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "string",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null
+          }
+        },
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty,dive,oneof=branch commit multi_commits\""
+          }
+        ]
+      },
+      "EnabledAutoTransitionWorkItemsAfterMergePlatforms": {
+        "type": "array",
+        "desc": "Updates platforms for auto-transitioning work item statuses after merging into the default branch.",
+        "raw_name": "EnabledAutoTransitionWorkItemsAfterMergePlatforms",
+        "raw_type": "list",
+        "field_id": 9,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "string",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "string",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null
+          }
+        }
+      },
+      "EnabledWorkItemPlatforms": {
+        "type": "array",
+        "desc": "[Deprecated] Updates supported work item management platforms. If you need to enable issue, use `IssueEnabled` instead.",
+        "raw_name": "EnabledWorkItemPlatforms",
+        "raw_type": "list",
+        "field_id": 10,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "string",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "string",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null
+          }
+        }
+      },
+      "SquashCommitsBeforeMergeLevel": {
+        "type": "string",
+        "desc": "Updates squash commit behavior before merging.",
+        "raw_name": "SquashCommitsBeforeMergeLevel",
+        "raw_type": "string",
+        "field_id": 11,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "AutoResolveOutdatedThreads": {
+        "type": "bool",
+        "desc": "Updates whether to automatically resolve outdated threads during merge.",
+        "raw_name": "AutoResolveOutdatedThreads",
+        "raw_type": "bool",
+        "field_id": 12,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "Topics": {
+        "type": "array",
+        "desc": "Updates list of topics to associate with the repository. An empty list clears all topics.",
+        "raw_name": "Topics",
+        "raw_type": "list",
+        "field_id": 13,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "string",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "string",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null
+          }
+        }
+      },
+      "Features": {
+        "type": "map",
+        "desc": "Updates feature flags for the repository (e.g. `ai_for_code`, `work_item_with_meego`).",
+        "raw_name": "Features",
+        "raw_type": "map",
+        "field_id": 14,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "_key": {
+            "type": "string",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "string",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null
+          },
+          "_val": {
+            "type": "bool",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "bool",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null
+          }
+        }
+      },
+      "AvatarURL": {
+        "type": "string",
+        "desc": "Updates URL of the repository avatar.",
+        "raw_name": "AvatarURL",
+        "raw_type": "string",
+        "field_id": 15,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "Properties": {
+        "type": "map",
+        "desc": "* Updates custom properties for the repository. Supported keys:\n     *  - `department`: Department ID\n     *  - `risk_level`: Security level (e.g. `L2` / `L3` / `L4`)\n     *  - `bytetree`: Bytetree node ID. Requires `X-Cloud-User-JWT` header when modifying this property.",
+        "raw_name": "Properties",
+        "raw_type": "map",
+        "field_id": 16,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "_key": {
+            "type": "string",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "string",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null
+          },
+          "_val": {
+            "type": "string",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "string",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": null
+          }
+        }
+      },
+      "ReviewRules": {
+        "type": "array",
+        "desc": "Deprecated. Use ReviewRulesets instead.",
+        "raw_name": "ReviewRules",
+        "raw_type": "list",
+        "field_id": 17,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "object",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "api/kitex/review.ReviewRule",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": "api/kitex/review.ReviewRule"
+          }
+        }
+      },
+      "LFSEnabled": {
+        "type": "bool",
+        "desc": "Updates whether Git LFS is enabled to allow pushing large files such as audio, video and graphics.",
+        "raw_name": "LFSEnabled",
+        "raw_type": "bool",
+        "field_id": 18,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "LFSIntegrityCheckRequired": {
+        "type": "bool",
+        "desc": "Updates whether to enforce Git LFS integrity by requiring LFS pointer files to have corresponding objects; prohibits pushing if missing, and rejects pushes with over 100 branches/tags when enabled.",
+        "raw_name": "LFSIntegrityCheckRequired",
+        "raw_type": "bool",
+        "field_id": 19,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "LowercaseRefNameCheckRequired": {
+        "type": "bool",
+        "desc": "Updates whether branch and tag names must be restricted to lowercase only.",
+        "raw_name": "LowercaseRefNameCheckRequired",
+        "raw_type": "bool",
+        "field_id": 20,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "FileSizeCheckRequired": {
+        "type": "bool",
+        "desc": "Updates whether to restrict file size during make push. When enabled, pushes with files exceeding `MaxFileSize` are rejected; pushes with more than 100 refs are also rejected for performance.",
+        "raw_name": "FileSizeCheckRequired",
+        "raw_type": "bool",
+        "field_id": 21,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "MaxFileSize": {
+        "type": "int",
+        "desc": "Updates the maximum file size (in byte) for non-LFS files. Valid range: 1 byte to 1GB (1073741824 bytes).",
+        "raw_name": "MaxFileSize",
+        "raw_type": "i32",
+        "field_id": 22,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "annotations": [
+          {
+            "name": "go.tag",
+            "value": "validate:\"omitempty,gte=1,lte=1073741824\""
+          }
+        ]
+      },
+      "MergeCommitMessageTemplate": {
+        "type": "string",
+        "desc": "Template for merge commit messages. If set to empty, the default template will be used.",
+        "raw_name": "MergeCommitMessageTemplate",
+        "raw_type": "string",
+        "field_id": 23,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "SquashCommitMessageTemplate": {
+        "type": "string",
+        "desc": "Template for squash commit messages. If set to empty, the default template will be used.",
+        "raw_name": "SquashCommitMessageTemplate",
+        "raw_type": "string",
+        "field_id": 24,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "IssueEnabled": {
+        "type": "bool",
+        "desc": "Updates whether to enable issue.",
+        "raw_name": "IssueEnabled",
+        "raw_type": "bool",
+        "field_id": 25,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null
+      },
+      "ReviewRulesets": {
+        "type": "array",
+        "desc": "Updates list of review ruleset",
+        "raw_name": "ReviewRulesets",
+        "raw_type": "list",
+        "field_id": 26,
+        "optional": true,
+        "raw_optional": true,
+        "ref_name": null,
+        "children": {
+          "0": {
+            "type": "object",
+            "desc": null,
+            "raw_name": null,
+            "raw_type": "api/kitex/review.ReviewRuleset",
+            "field_id": null,
+            "optional": null,
+            "raw_optional": null,
+            "ref_name": "api/kitex/review.ReviewRuleset"
+          }
+        }
+      }
+    },
+    "filename": "api/kitex/repository.thrift",
+    "req_type": "api/kitex/repository.UpdateRepositoryRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "Repository": {
+          "type": "object",
+          "desc": "Updated repository.",
+          "raw_name": "Repository",
+          "raw_type": "api/kitex/repository.Repository",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": "api/kitex/repository.Repository"
+        }
+      },
+      "filename": "api/kitex/repository.thrift",
+      "resp_type": "api/kitex/repository.UpdateRepositoryResponse"
+    }
+  }
+}

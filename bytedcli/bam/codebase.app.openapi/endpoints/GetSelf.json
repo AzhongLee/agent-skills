@@ -1,0 +1,63 @@
+{
+  "endpoint_id": 3021561,
+  "method": "POST",
+  "path": "/GetSelf",
+  "level": 0,
+  "name": "GetSelf",
+  "note": "获取当前用户",
+  "rpc_method": "GetSelf",
+  "owner": "qianjingtao.qjt",
+  "updater": "lijinxing.x",
+  "modify_time": 1769889471,
+  "create_time": 1769758372,
+  "serializer": "json",
+  "resp_serializer": "json",
+  "oneway": false,
+  "regexp_path": "",
+  "psm": "codebase.app.openapi",
+  "publish_status": 0,
+  "priority": 110,
+  "version": "1.0.337",
+  "latest_version": "",
+  "extra_info": {
+    "endpoint_annotations": [
+      {
+        "name": "api.api_level",
+        "value": "0"
+      },
+      {
+        "name": "vecode.meta",
+        "value": "read,openapi"
+      }
+    ]
+  },
+  "total_qps": 0,
+  "err_qps": 0,
+  "apps": null,
+  "folder_id": 207778,
+  "newest": 1,
+  "branch": "master",
+  "folder": "account",
+  "req_schema": {
+    "filename": "api/kitex/account.thrift",
+    "req_type": "api/kitex/account.GetSelfRequest"
+  },
+  "resp_schema": {
+    "200": {
+      "body_param": {
+        "User": {
+          "type": "object",
+          "desc": "User information.",
+          "raw_name": "User",
+          "raw_type": "api/kitex/account.User",
+          "field_id": 1,
+          "optional": null,
+          "raw_optional": null,
+          "ref_name": "api/kitex/account.User"
+        }
+      },
+      "filename": "api/kitex/account.thrift",
+      "resp_type": "api/kitex/account.GetSelfResponse"
+    }
+  }
+}
