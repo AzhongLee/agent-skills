@@ -127,8 +127,11 @@ Parallel mode reads task config from stdin and executes tasks in dependency orde
 - `backend:` optional
 - `dependencies:` optional
 - `agent:` optional
-- `reasoning:` optional
-- `prompt_file:` optional
+- `reasoning_effort:` optional
+- `skills:` optional
+- `skip_permissions:` optional
+- `worktree:` optional
+- `session_id:` optional
 
 **Important constraints:**
 
@@ -218,7 +221,7 @@ Unsafe guidance to avoid:
 - `CODEAGENT_SKIP_PERMISSIONS`: Claude permission control, default effectively `true`; set `false` to re-enable prompts
 - `CODEAGENT_MAX_PARALLEL_WORKERS`: limit worker count in parallel mode
 - `CODEAGENT_FULL_OUTPUT`: request full parallel output
-- `CODEX_TIMEOUT`: backend timeout in milliseconds
+- `CODEX_TIMEOUT`: backend timeout; accepts seconds (e.g. `7200`) or milliseconds (values >10000 are auto-converted to seconds, e.g. `7200000`); default 7200s (2 hours)
 - `CODEX_BYPASS_SANDBOX`: Codex sandbox bypass control, default effectively `true`; set `false` to disable
 
 ## Quick Decision Guide

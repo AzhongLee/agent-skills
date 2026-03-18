@@ -45,16 +45,21 @@ The worktree is created **only when needed** (right before Phase 4: Implement). 
    python3 "$HOME/.claude/skills/do/scripts/setup-do.py" --worktree "<task description>"
    ```
 
-2. Use the `DO_WORKTREE_DIR` environment variable to direct `codeagent-wrapper` develop agent into the worktree. **Do NOT pass `--worktree` to subsequent calls** — that creates a new worktree each time.
+2. Use the `DO_WORKTREE_DIR` environment variable to direct subsequent `codeagent-wrapper` calls into that existing worktree. **Do NOT pass `--worktree` to subsequent calls** — that creates a new worktree each time.
 
 ```bash
-# Save the worktree path from setup output, then prefix all develop calls:
+# Save the worktree path from setup output, then prefix every wrapper call that must see the worktree state:
 DO_WORKTREE_DIR=<worktree_dir> codeagent-wrapper --agent develop - . <<'EOF'
 ...
 EOF
 ```
 
-Read-only agents (code-explorer, code-architect, code-reviewer) do NOT need `DO_WORKTREE_DIR`.
+Important:
+
+- `DO_WORKTREE_DIR` is applied by the wrapper itself, not only by the `develop` agent.
+- After the worktree is created in Phase 4, any `codeagent-wrapper` call that must inspect, review, or summarize the implemented changes should be prefixed with `DO_WORKTREE_DIR=<worktree_dir>`.
+- Prefer per-command prefixes instead of exporting `DO_WORKTREE_DIR` globally, so unrelated wrapper calls are not silently redirected.
+- Phases 1-3 happen before worktree creation, so they normally run in the main workspace and do not need `DO_WORKTREE_DIR`.
 
 ## Hard Constraints
 
@@ -63,16 +68,16 @@ Read-only agents (code-explorer, code-architect, code-reviewer) do NOT need `DO_
 3. **Update phase after each phase.** Use `task.py update-phase <N>`.
 4. **Expect long-running `codeagent-wrapper` calls.** High-reasoning modes can take a long time.
 5. **Timeouts are not an escape hatch.** If a call times out, retry with narrower scope.
-6. **Defer worktree decision until Phase 4.** Only ask about worktree mode right before implementation. If enabled, prefix develop agent calls with `DO_WORKTREE_DIR=<path>`. Never pass `--worktree` after initialization.
+6. **Defer worktree decision until Phase 4.** Only ask about worktree mode right before implementation. If enabled, prefix each implementation/review/completion wrapper call that should operate on the worktree with `DO_WORKTREE_DIR=<path>`. Never pass `--worktree` after initialization.
 
 ## Agents
 
-| Agent | Purpose | Needs --worktree |
-|-------|---------|------------------|
-| `code-explorer` | Trace code, map architecture, find patterns | No (read-only) |
-| `code-architect` | Design approaches, file plans, build sequences | No (read-only) |
-| `code-reviewer` | Review for bugs, simplicity, conventions | No (read-only) |
-| `develop` | Implement code, run tests | **Yes** — use `DO_WORKTREE_DIR` env prefix |
+| Agent | Purpose | Worktree usage |
+|-------|---------|----------------|
+| `code-explorer` | Trace code, map architecture, find patterns | Phases 1-3 usually run before worktree creation, so no |
+| `code-architect` | Design approaches, file plans, build sequences | Phases 1-3 usually run before worktree creation, so no |
+| `code-reviewer` | Review for bugs, simplicity, conventions | **Yes, if reviewing implemented work inside a worktree** — prefix that call with `DO_WORKTREE_DIR` |
+| `develop` | Implement code, run tests | **Yes, if implementation should happen inside a worktree** — prefix that call with `DO_WORKTREE_DIR` |
 
 ## Issue Severity Definitions
 
@@ -243,11 +248,29 @@ Note: Choose which skills to inject based on Phase 3 design output. Only inject 
 
 **Step 3: Review**
 
-**Step 3: Review**
-
 Run parallel reviews:
 
 ```bash
+# With worktree:
+DO_WORKTREE_DIR=<worktree_dir> codeagent-wrapper --parallel <<'EOF'
+---TASK---
+id: p4_correctness
+agent: code-reviewer
+workdir: .
+---CONTENT---
+Review for correctness, edge cases, failure modes.
+Classify each issue as BLOCKING or MINOR.
+
+---TASK---
+id: p4_simplicity
+agent: code-reviewer
+workdir: .
+---CONTENT---
+Review for KISS: remove bloat, collapse needless abstractions.
+Classify each issue as BLOCKING or MINOR.
+EOF
+
+# Without worktree:
 codeagent-wrapper --parallel <<'EOF'
 ---TASK---
 id: p4_correctness
@@ -277,6 +300,17 @@ EOF
 **Goal:** Document what was built.
 
 ```bash
+# With worktree:
+DO_WORKTREE_DIR=<worktree_dir> codeagent-wrapper --agent code-reviewer - . <<'EOF'
+Write completion summary:
+- What was built
+- Key decisions/tradeoffs
+- Files modified (paths)
+- How to verify (commands)
+- Follow-ups (optional)
+EOF
+
+# Without worktree:
 codeagent-wrapper --agent code-reviewer - . <<'EOF'
 Write completion summary:
 - What was built
