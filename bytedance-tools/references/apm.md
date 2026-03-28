@@ -7,10 +7,10 @@ NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest 
 # QPS
 NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest apm redis-qps --psm "toutiao.redis.coze_coding"
 NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest apm redis-traffic --psm "toutiao.redis.coze_coding"
-NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest apm service-qps --psm "coze.coding.deploy"
-NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest apm service-qps --psm "coze.coding.deploy" --metric "service.request.server.throughput.total"
-NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest apm downstream-qps --psm "coze.coding.deploy"
-NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest apm downstream-qps --psm "coze.coding.deploy" --metric "service.request.downstream.throughput.total"
+NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest apm service-qps --psm "example.service.api"
+NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest apm service-qps --psm "example.service.api" --metric "service.request.server.throughput.total"
+NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest apm downstream-qps --psm "example.service.api"
+NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest apm downstream-qps --psm "example.service.api" --metric "service.request.downstream.throughput.total"
 
 # Redis 监控
 NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest apm redis-overview --psm "toutiao.redis.coze_coding"

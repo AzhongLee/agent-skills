@@ -12,12 +12,18 @@ NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest 
 NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest env search-env --keyword "ppe_coze" --env-site cn,boe
 
 # 按服务搜索
-NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest env search-service --service "coze.coding.deploy" --env-site cn,boe
+NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest env search-service --service "example.service.api" --env-site cn,boe
+
+# 创建流程相关
+NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest env list-baseline-envs
+NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest env list-baseline-zones --standard-env online_cn
+NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest env check-name --name "ppe_demo" --standard-env online_cn
+NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest env create-env --name "ppe_demo" --standard-env online_cn --idc LF --visibility private
 
 # 部署与升级
 NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest env deploy-tce-service --env "ppe_demo" --standard-env online_i18nbd --psm "flow.bot.open_gateway" --flow-base prod
 NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest env deploy-tcc-service --env "ppe_demo" --standard-env online_i18nbd --psm "ocean.cloud.bot_adapter"
-NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest env upgrade-tce-service --env "ppe_demo" --standard-env online_i18nbd --psm "flow.bot.open_gateway" --cluster-id 350079955 --branch "feat/demo"
+NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest env upgrade-tce-service --env "ppe_demo" --standard-env online_i18nbd --psm "flow.bot.open_gateway" --cluster-id 350079955 --flow-base prod --scm-env-type prod
 
 # 设备管理
 NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest env list-device --env "ppe_demo" --standard-env online_i18nbd

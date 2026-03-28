@@ -1,5 +1,0 @@
-interface:
-  display_name: "ByteDance Cloud Ticket"
-  short_description: "Cloud Ticket workflow tickets via bytedcli"
-  default_prompt: "Use $bytedance-cloud-ticket to list or filter Cloud Ticket workflow tickets (pending approvals / created by me / all)."
-

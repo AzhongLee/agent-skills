@@ -1,50 +1,245 @@
-# Hive (DataLeap) 数据目录
+# Hive (DataLeap Data Catalog) CLI Reference
 
-搜索和探索 DataLeap 数据目录中的 Hive/Clickhouse/Doris 数据资产。
+The Hive CLI provides commands to search and explore data assets in the DataLeap data catalog, including Hive, Clickhouse, and Doris databases and tables.
 
-## 命令
+## Commands
+
+### search
+
+Search for databases and tables in DataLeap.
 
 ```bash
-# 搜索数据库
-bytedcli hive search --query "my_database" --type HiveDB --region cn
-
-# 搜索表
-bytedcli hive search --query "user" --type HiveTable --region gcp
-
-# 获取数据库详情
-bytedcli hive detail my_database --region cn
-
-# 获取表详情（含完整 schema）
-bytedcli hive detail my_database my_table --region gcp
-
-# 通过 GUID 获取详情
-bytedcli hive get <guid> --region cn
-
-# 查看数据血缘
-bytedcli hive lineage <guid> --region cn --depth 3
+bytedcli hive search [options]
 ```
 
-## 支持的资产类型
+**Options:**
+- `--query <query>` - Search query (required)
+- `-t, --type <type>` - Asset type: HiveDB, HiveTable, ClickhouseDB, ClickhouseTable, DorisTable, DataTopics (default: "HiveDB")
+- `-r, --region <region>` - Region: cn, sg, gcp (default: "cn")
+- `-p, --page <page>` - Page number (default: 1)
+- `--size <size>` - Page size (default: 20)
 
-| 类型 | 说明 |
-|------|------|
-| `HiveDB` | Hive 数据库 |
-| `HiveTable` | Hive 表 |
-| `ClickhouseDB` | Clickhouse 数据库 |
-| `ClickhouseTable` | Clickhouse 表 |
-| `DorisTable` | Doris 表 |
-| `DataTopics` | 数据主题 |
+**Examples:**
+```bash
+# Search for Hive databases
+bytedcli hive search --query "privacy" --type HiveDB --region gcp
 
-## 支持的区域
+# Search for Hive tables with pagination
+bytedcli hive search --query "user" --type HiveTable --region cn --page 1 --size 50
 
-| 区域 | 说明 |
-|------|------|
-| `cn` | 中国（默认） |
-| `sg` | 新加坡 |
-| `gcp` / `eu` | 欧洲合规区 |
+# Search for Clickhouse tables
+bytedcli hive search --query "events" --type ClickhouseTable --region sg
+```
 
-## 说明
+**Output:**
+- Name, Type, Description, Owner, Environment, Location
+- For table searches: preview of columns for first matching table
 
-- 默认资产类型为 `HiveDB`
-- `detail` 和 `get` 命令会显示完整的表 schema（列名、类型、注释）
-- `lineage` 显示上下游数据依赖关系
+---
+
+### detail
+
+Get detailed database or table information including full schema and producer Dorado task IDs.
+
+```bash
+bytedcli hive detail [database] [table] [options]
+```
+
+**Arguments:**
+- `database` - Database name (required)
+- `table` - Table name (optional, omit for database details)
+
+**Options:**
+- `-r, --region <region>` - Region: cn, sg, gcp (default: "cn")
+- `-t, --type <type>` - Asset type (HiveDB, HiveTable, ClickhouseDB, etc.)
+
+**Examples:**
+```bash
+# Get database details
+bytedcli hive detail my_database --region gcp
+
+# Get table details with full schema and producer Dorado task IDs
+bytedcli hive detail my_database my_table --region gcp
+
+# Get Clickhouse database details
+bytedcli hive detail clickhouse_db --type ClickhouseDB --region cn
+```
+
+**Output:**
+- GUID, Type, Name, Qualified Name, Description
+- Parent DB, DB Type, Environment, Location
+- Table Type, Latest Partition (for tables)
+- Producer Dorado Task IDs (when upstream lineage exposes `DoradoTask`)
+- **Columns**: Name, Type, Comment (for tables)
+- **Partition Keys**: Name, Type, Comment (for tables)
+
+---
+
+### get
+
+Get entity details by GUID with full schema information and producer Dorado task IDs.
+
+```bash
+bytedcli hive get [guid] [options]
+```
+
+**Arguments:**
+- `guid` - Entity GUID from search results (required)
+
+**Options:**
+- `-r, --region <region>` - Region: cn, sg, gcp (default: "cn")
+
+**Examples:**
+```bash
+# Get table details by GUID
+bytedcli hive get d57dbbcc-bf37-497c-9d2d-63b71b68a91e --region gcp
+
+# Get database details by GUID
+bytedcli hive get 42a2ae28-1d37-44fe-8cab-dc910b73361e --region gcp
+```
+
+**Output:**
+- Entity Details (GUID, Type, Name, Qualified Name)
+- Full schema including columns and partition keys
+- Producer Dorado Task IDs (when upstream lineage exposes `DoradoTask`)
+
+---
+
+### rows
+
+Get partition row counts for a Hive table.
+
+```bash
+bytedcli hive rows [database] [table] [options]
+```
+
+**Arguments:**
+- `database` - Database name (required)
+- `table` - Table name (required)
+
+**Options:**
+- `-r, --region <region>` - Region: cn, sg, gcp (default: "cn")
+
+**Examples:**
+```bash
+# Get partition row counts for a table in CN region
+bytedcli hive rows my_database my_table
+
+# Get partition row counts for a table in SG region
+bytedcli hive rows db1 table1 --region sg
+```
+
+**Output:**
+- Database, Table, Region
+- Total Rows (sum of all partitions)
+- Partition Count
+- Top 20 Partitions by Row Count (Partition Value, Rows)
+
+---
+
+### lineage
+
+Get entity lineage showing upstream and downstream data dependencies.
+
+```bash
+bytedcli hive lineage [guid] [options]
+```
+
+**Arguments:**
+- `guid` - Entity GUID (required)
+
+**Options:**
+- `-r, --region <region>` - Region: cn, sg, gcp (default: "cn")
+- `-d, --depth <depth>` - Lineage depth (default: 3)
+
+**Examples:**
+```bash
+# Get lineage with default depth
+bytedcli hive lineage d57dbbcc-bf37-497c-9d2d-63b71b68a91e --region gcp
+
+# Get deeper lineage
+bytedcli hive lineage d57dbbcc-bf37-497c-9d2d-63b71b68a91e --region gcp --depth 5
+```
+
+**Output:**
+- Base entity GUIDs
+- Related entities (Type, Name, GUID)
+- Relations (From -> To)
+
+---
+
+## Asset Types
+
+| Type | Description |
+|------|-------------|
+| `HiveDB` | Hive database |
+| `HiveTable` | Hive table |
+| `ClickhouseDB` | Clickhouse database |
+| `ClickhouseTable` | Clickhouse table |
+| `DorisTable` | Doris table |
+| `DataTopics` | Data topics |
+
+## Regions
+
+| Region | Aliases | CID | Endpoint |
+|--------|---------|-----|----------|
+| `cn` | china | 0 | data.bytedance.net |
+| `sg` | singapore, row | 6 | dataleap-sg.tiktok-row.net |
+| `gcp` | eu, texas | 31 | dataleap-gp-ttp-eu.tiktok-eu.net |
+
+## Qualified Name Format
+
+The qualified name uniquely identifies an asset:
+
+- **Database**: `{Type}:///{database}@{cid}`
+  - Example: `HiveDB:///my_database@0`
+- **Table**: `{Type}:///{database}/{table}@{cid}`
+  - Example: `HiveTable:///my_database/my_table@31`
+
+## Common Column Types
+
+| Type | Description |
+|------|-------------|
+| `string` | String/text data |
+| `bigint` | 64-bit integer |
+| `int` | 32-bit integer |
+| `tinyint` | 8-bit integer |
+| `boolean` | True/false |
+| `double` | Double precision float |
+| `date` | Date without time |
+| `timestamp` | Date with time |
+| `array<T>` | Array of type T |
+| `map<K,V>` | Map with key K and value V |
+
+## Authentication
+
+The CLI uses JWT authentication via SSO. Ensure you are logged in:
+
+```bash
+bytedcli auth login
+```
+
+## JSON Output
+
+Use `--json` flag for structured output:
+
+```bash
+bytedcli --json hive search --query "test" --type HiveTable --region cn
+```
+
+Output structure:
+```json
+{
+  "status": "success",
+  "data": {
+    "entities": [...],
+    "total": 100,
+    "page": 1,
+    "page_size": 20
+  },
+  "context": {
+    "execution_time_ms": 500,
+    "timestamp": "2026-03-05T10:00:00.000Z"
+  }
+}
+```

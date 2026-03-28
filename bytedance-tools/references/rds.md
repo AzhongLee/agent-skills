@@ -74,6 +74,13 @@ NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest 
   --sql "ALTER TABLE users ADD COLUMN age INT;" \
   --background "变更原因"
 
+# 申请个人库权限工单（支持 maliva 等区域；示例使用 i18n-bd 站点）
+NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest --site i18n-bd rds bpm-apply-permission \
+  --dbname "my_database" \
+  --region "maliva" \
+  --user-list "user1,user2" \
+  --background "Apply for dev usage"
+
 # 创建 DDL 工单 - CREATE
 NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest --site boe rds bpm-create \
   --workflow-config-id 812 \
@@ -94,12 +101,16 @@ NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest 
 
 # 列出工单
 NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest --site boe rds bpm-list --dbname "my_database"
+NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest --site boe rds bpm-list --workflow-config-id 812 --status pending
 
 # 取消工单
 NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest --site boe rds bpm-cancel <record_id> --reason "取消原因"
 
 # 更新工单 SQL
 NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest --site boe rds bpm-update-sql <record_id> --sql "新的 SQL"
+
+# 获取工作流配置
+NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest --site boe rds bpm-get-workflow-config 812
 ```
 
 ## Notes

@@ -49,6 +49,13 @@ NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest 
   --sql "ALTER TABLE users ADD COLUMN age INT;" \
   --background "添加年龄字段"
 
+# 申请个人库权限工单（支持 maliva 等区域；示例使用 i18n-bd 站点）
+NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest --site i18n-bd rds bpm-apply-permission \
+  --dbname "my_database" \
+  --region "maliva" \
+  --user-list "user1,user2" \
+  --background "Apply for dev usage"
+
 # 创建 DDL 工单 - CREATE
 NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest --site boe rds bpm-create \
   --workflow-config-id 812 \
@@ -72,7 +79,7 @@ NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest 
 
 ## Notes
 
-- 需要结构化输出加 `--json`
+- 需要结构化输出加 `--json`（全局选项，放在子命令之前，如 `NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest --json rds list-starred-db`）
 - BPM 工单仅在 `boe`/`boei18n` 站点可用
 - BPM 审批/拒绝请使用 BPM Web UI
 - DDL 工单需要指定 `--ticket-type`：`alter`（修改表）或 `create`（创建表）

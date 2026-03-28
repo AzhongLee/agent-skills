@@ -74,6 +74,13 @@ NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest 
   --sql "ALTER TABLE users ADD COLUMN age INT;" \
   --background "变更原因"
 
+# 申请个人库权限工单（支持 maliva 等区域；示例使用 i18n-bd 站点）
+NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest --site i18n-bd rds bpm-apply-permission \
+  --dbname "my_database" \
+  --region "maliva" \
+  --user-list "user1,user2" \
+  --background "Apply for dev usage"
+
 # 创建 DDL 工单 - CREATE
 NPM_CONFIG_REGISTRY=http://bnpm.byted.org npx -y @bytedance-dev/bytedcli@latest --site boe rds bpm-create \
   --workflow-config-id 812 \

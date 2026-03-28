@@ -1,5 +1,0 @@
-interface:
-  display_name: "ByteDance Neptune"
-  short_description: "Neptune governance configs via bytedcli"
-  default_prompt: "Use $bytedance-neptune to inspect Neptune security/stability/rate-limit/dispatch configs across CN/BOE/ByteIntl and to list supported zones/vregions."
-

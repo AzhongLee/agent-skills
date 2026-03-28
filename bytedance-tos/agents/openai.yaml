@@ -1,5 +1,0 @@
-interface:
-  display_name: "ByteDance TOS"
-  short_description: "TOS buckets/records and env discovery via bytedcli"
-  default_prompt: "Use $bytedance-tos to list buckets, user records, or discover supported TOS sites/VRegions."
-

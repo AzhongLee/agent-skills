@@ -1,4 +1,0 @@
-interface:
-  display_name: "ByteDance BMQ"
-  short_description: "Manage BMQ (Kafka) topics, clusters, consumers, mirrors via bytedcli"
-  default_prompt: "Use $bytedance-bmq to list/search Kafka topics, clusters, consumer groups, and mirrors."

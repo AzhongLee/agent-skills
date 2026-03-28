@@ -1,0 +1,4 @@
+interface:
+  display_name: "ByteDance Feishu"
+  short_description: "Operate Feishu/Lark docs, calendars, tasks, chats, sheets, and bitables via bytedcli"
+  default_prompt: "Use $bytedance-feishu to read or update Feishu/Lark docs, schedule meetings, create tasks, search users or docs, and operate chats, sheets, or bitables through bytedcli."
